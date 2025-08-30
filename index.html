@@ -5,26 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WinFit - Giáo Án Tập Luyện Tại Nhà</title>
   <style>
-    /* Reset */
+    /* Reset & font */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; font-family: 'Arial Black', sans-serif; color: #fff; }
-
-    /* Video Background */
-    .bg-video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-      filter: brightness(40%); /* làm tối để chữ nổi bật */
-      object-fit: cover;
+    body {
+      font-family: 'Arial Black', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
     }
 
-    /* Overlay content */
+    /* Header */
     header {
       text-align: center;
-      padding: 100px 20px 50px;
+      padding: 60px 20px;
+      border-bottom: 2px solid #fff;
     }
     header h1 {
       font-size: 3rem;
@@ -32,13 +26,13 @@
       letter-spacing: 3px;
     }
     header p {
-      margin-top: 15px;
-      font-size: 1.2rem;
+      margin-top: 10px;
+      font-size: 1.1rem;
       font-weight: 300;
-      opacity: 0.9;
+      opacity: 0.8;
     }
 
-    /* Ebook section */
+    /* Section Ebook */
     .ebooks {
       display: flex;
       flex-wrap: wrap;
@@ -47,7 +41,7 @@
       gap: 30px;
     }
     .ebook {
-      background: rgba(0,0,0,0.7);
+      background: #111;
       border: 2px solid #fff;
       padding: 20px;
       width: 280px;
@@ -56,7 +50,7 @@
     }
     .ebook:hover {
       transform: translateY(-5px);
-      border: 2px solid #aaa;
+      border: 2px solid #ccc;
     }
     .ebook img {
       width: 100%;
@@ -93,27 +87,20 @@
     footer {
       text-align: center;
       padding: 30px;
+      border-top: 2px solid #fff;
       font-size: 0.9rem;
-      opacity: 0.8;
-      background: rgba(0,0,0,0.6);
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <!-- Background video -->
-  <video autoplay muted loop class="bg-video">
-    <source src="https://vimeo.com/1114509898?share=copy">
-    Trình duyệt của bạn không hỗ trợ video nền.
-  </video>
-
-  <!-- Header -->
   <header>
     <h1>WinFit</h1>
-    <p>Giáo Án Tập Luyện Tại Nhà - Nam tính & Mạnh mẽ</p>
+    <p>Giáo Án Tập Luyện Tại Nhà - Nam tính, mạnh mẽ, hiệu quả</p>
   </header>
 
-  <!-- Ebook section -->
   <section class="ebooks">
+    <!-- Ebook 1 -->
     <div class="ebook">
       <img src="https://via.placeholder.com/280x380.png?text=WinFit+Ebook+1" alt="Ebook 1">
       <h2>Giáo án 30 ngày</h2>
@@ -121,6 +108,7 @@
       <a href="ebooks/ebook1.pdf" download>Tải Ngay</a>
     </div>
 
+    <!-- Ebook 2 -->
     <div class="ebook">
       <img src="https://via.placeholder.com/280x380.png?text=WinFit+Ebook+2" alt="Ebook 2">
       <h2>Thực đơn ăn uống</h2>
@@ -129,9 +117,9 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 WinFit. All rights reserved.</p>
   </footer>
 </body>
 </html>
+
