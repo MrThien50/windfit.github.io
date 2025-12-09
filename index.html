@@ -1,135 +1,216 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WinFit - Ebook Tập Luyện</title>
-  <style>
-    /* Reset */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body, html {height:100%; font-family:'Montserrat', sans-serif; color:#fff;}
-
-    /* Video nền */
-    .video-bg {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      object-fit: cover;
-      z-index:-1;
-      filter: brightness(0.4); /* làm tối video để chữ nổi bật */
-    }
-
-    /* Header */
-    header {
-      position: fixed;
-      top:0; left:0; width:100%;
-      padding:20px 50px;
-      display:flex; justify-content:space-between; align-items:center;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);
-      z-index:10;
-    }
-    header h1 {font-size:28px; font-weight:700; letter-spacing:2px;}
-    header nav a {
-      color:white; text-decoration:none; margin:0 15px; font-weight:500;
-      transition: color .3s;
-    }
-    header nav a:hover {color:#e63946;}
-
-    /* Hero section */
-    .hero {
-      height:100vh;
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center;
-      text-align:center;
-      padding:0 20px;
-    }
-    .hero h2 {
-      font-size:60px; font-weight:900; margin-bottom:20px;
-      text-transform: uppercase;
-    }
-    .hero p {
-      font-size:20px; max-width:600px; margin:auto; line-height:1.5;
-      margin-bottom:40px;
-    }
-    .btn {
-      background:#e63946; padding:15px 35px; border:none;
-      font-size:18px; font-weight:700; cursor:pointer;
-      color:#fff; text-transform:uppercase;
-      transition:0.3s;
-    }
-    .btn:hover {background:#fff; color:#e63946;}
-
-    /* Ebook section */
-    .ebooks {
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px; padding:100px 50px; background:rgba(0,0,0,0.85);
-    }
-    .ebook {
-      background:#111; padding:30px; border-radius:8px;
-      text-align:center; transition: transform 0.3s;
-    }
-    .ebook:hover {transform: translateY(-10px);}
-    .ebook h3 {font-size:24px; margin-bottom:15px;}
-    .ebook p {font-size:16px; margin-bottom:20px; line-height:1.4;}
-    .ebook a {
-      display:inline-block; background:#e63946; color:#fff;
-      padding:10px 20px; font-weight:700; text-decoration:none;
-      transition:0.3s;
-    }
-    .ebook a:hover {background:#fff; color:#e63946;}
-
-    /* Footer */
-    footer {
-      background:#000; text-align:center; padding:20px;
-      font-size:14px; color:#aaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymFit Pro - Chương Trình Tập Gym Chuyên Nghiệp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; }
+        .navbar-brand { font-weight: 900; font-size: 28px; }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920') center/cover no-repeat;
+            color: white;
+            padding: 160px 0 120px;
+        }
+        .program-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(231,76,60,0.3);
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .badge-popular {
+            background: #f39c12;
+            font-size: 0.9rem;
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+        .btn-buy {
+            background: var(--primary);
+            border: none;
+            padding: 14px 40px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .btn-buy:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+        footer {
+            background: var(--dark);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Video nền -->
-  <video autoplay muted loop class="video-bg">
-    <source src="pg.mp4" type="video/mp4">
-  </video>
-
-  <!-- Header -->
-  <header>
-    <h1>WinFit</h1>
-    <nav>
-      <a href="#">Trang chủ</a>
-      <a href="#ebooks">Ebook</a>
-      <a href="#contact">Liên hệ</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">GYM<span style="color:#e74c3c">FIT PRO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#programs">Chương trình</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-4 rounded-pill" href="https://zalo.me/090xxxxxxx">Chat Zalo ngay</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Sức Mạnh Trong Bạn</h2>
-    <p>Khám phá bộ ebook tập luyện và dinh dưỡng giúp bạn rèn luyện thân thể ngay tại nhà, mạnh mẽ và kỷ luật.</p>
-    <a href="#ebooks" class="btn">Khám Phá Ngay</a>
-  </section>
+    <!-- Hero -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Biến Đổi Cơ Thể Chỉ Trong 90 Ngày</h1>
+            <p class="lead mb-5 fs-4">Hơn 5.000+ học viên đã tăng 5-12kg cơ bắp hoặc giảm 8-15kg mỡ thừa với chương trình của GymFit Pro</p>
+            <a href="#programs" class="btn btn-danger btn-lg px-5 py-4 rounded-pill fw-bold">CHỌN CHƯƠNG TRÌNH NGAY</a>
+        </div>
+    </section>
 
-  <!-- Ebook Section -->
-  <section id="ebooks" class="ebooks">
-    <div class="ebook">
-      <h3>Giáo Án 30 Ngày</h3>
-      <p>Chương trình tập luyện tại nhà trong 30 ngày, giúp xây dựng cơ thể săn chắc và kỷ luật.</p>
-      <a href="ebook1.pdf" download>Tải Ngay</a>
-    </div>
-    <div class="ebook">
-      <h3>Thực Đơn Ăn Uống</h3>
-      <p>Thực đơn dinh dưỡng cân bằng hỗ trợ quá trình tập luyện, dễ áp dụng tại nhà.</p>
-      <a href="ebook2.pdf" download>Tải Ngay</a>
-    </div>
-  </section>
+    <!-- Programs -->
+    <section id="programs" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">CHƯƠNG TRÌNH TẬP LUYỆN</h2>
+                <p class="lead text-muted">Chọn gói phù hợp với mục tiêu của bạn</p>
+            </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 WinFit. All rights reserved.
-  </footer>
+            <div class="row g-5">
+                <!-- Beginner -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card h-100 bg-light">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800" class="w-100" style="height: 280px; object-fit: cover;">
+                        <div class="p-4">
+                            <h3 class="fw-bold">Beginner Transform</h3>
+                            <p class="text-muted">Dành cho người mới bắt đầu, chưa biết gì về gym</p>
+                            <ul class="list-unstyled mb-4">
+                                <li>✔ 12 tuần tập luyện chi tiết</li>
+                                <li>✔ Giáo án ăn uống tăng cân/cơ nạc</li>
+                                <li>✔ Video hướng dẫn từng động tác</li>
+                                <li>✔ Nhóm hỗ trợ Zalo riêng</li>
+                            </ul>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted">1.500.000đ</span><br>
+                                    <span class="price">690.000đ</span>
+                                </div>
+                                    <span class="badge badge-popular">BÁN CHẠY NHẤT</span>
+                                </div>
+                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="690000" data-name="Beginner Transform">
+                                <i class="fas fa-bolt me-2"></i>MUA NGAY - GIẢM 54%
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Muscle Gain -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card h-100 bg-light">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800" class="w-100" style="height: 280px; object-fit: cover;">
+                        <div class="p-4">
+                            <h3 class="fw-bold">Muscle Master 90 Ngày</h3>
+                            <p class="text-muted">Tăng 7-12kg cơ bắp sạch (đã trừ mỡ)</p>
+                            <ul class="list-unstyled mb-4">
+                                <li>✔ 90 ngày tập luyện chuyên sâu</li>
+                                <li>✔ Thực đơn 3000-4500kcal/ngày</li>
+                                <li>✔ Kèm theo hướng dẫn dùng thực phẩm bổ sung</li>
+                                <li>✔ Hỗ trợ 1-1 với HLV trưởng</li>
+                                <li>✔ Cập nhật giáo án theo tiến độ</li>
+                            </ul>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted">3.900.000đ</span><br>
+                                    <span class="price">1.590.000đ</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="1590000" data-name="Muscle Master 90 Ngày">
+                                <i class="fas fa-fire me-2"></i>MUA NGAY - CHỈ 17K/NGÀY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fat Loss -->
+                <div class="col-lg-4 col-md-6 mx-auto">
+                    <div class="program-card h-100 bg-light">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800" class="w-100" style="height: 280px; object-fit: cover;">
+                        <div class="p-4">
+                            <h3 class="fw-bold">Shredded 60 Ngày</h3>
+                            <p class="text-muted">Giảm 8-15kg mỡ, lộ cơ bụng 6 múi</p>
+                            <ul class="list-unstyled mb-4">
+                                <li>✔ 60 ngày tập + cardio khoa học</li>
+                                <li>✔ Thực đơn cắt nét chi tiết</li>
+                                <li>✔ Hướng dẫn posing + chụp hình</li>
+                                <li>✔ Nhóm VIP riêng chỉ 30 người</li>
+                            </ul>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted">2.900.000đ</span><br>
+                                    <span class="price">1.290.000đ</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="1290000" data-name="Shredded 60 Ngày">
+                                <i class="fas fa-dumbbell me-2"></i>MUA NGAY - GIẢM 55%
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white py-5">
+        <div class="container text-center">
+            <h3 class="fw-bold mb-3">GYM<span style="color:#e74c3c">FIT PRO</span></h3>
+            <p class="mb-4">Đã giúp hơn 5.000+ người Việt Nam thay đổi vóc dáng từ 2021</p>
+            <p>Hotline/Zalo: 090xxxxxxx • Email: gymfitpro@gmail.com</p>
+            <p>&copy; 2025 GymFit Pro. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Stripe Checkout Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const stripe = Stripe('pk_live_51...'); // Thay bằng Publishable key của bạn (hoặc dùng test key trước)
+
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const price = this.getAttribute('data-price');
+                const name = this.getAttribute('data-name');
+
+                stripe.redirectToCheckout({
+                    lineItems: [{ price: price === '690000' ? 'price_1Q...' : price === '1590000' ? 'price_1Q...' : 'price_1Q...', quantity: 1 }],
+                    mode: 'payment',
+                    successUrl: window.location.origin + '/success.html',
+                    cancelUrl: window.location.origin + '/cancel.html',
+                    customerEmail: '',
+                    billingAddressCollection: 'required',
+                    locale: 'vi'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
