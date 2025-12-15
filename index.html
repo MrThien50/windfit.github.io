@@ -3,214 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WindFit Pro - Chương Trình Tập Gym Chuyên Nghiệp</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://js.stripe.com/v3/"></script>
+    <title>VietFit Pro - Tăng Cơ Giảm Mỡ Dành Riêng Cho Người Việt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #e74c3c;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-        }
-        body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; }
-        .navbar-brand { font-weight: 900; font-size: 28px; }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920') center/cover no-repeat;
-            color: white;
-            padding: 160px 0 120px;
-        }
-        .program-card {
-            transition: all 0.3s ease;
-            border: none;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .program-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(231,76,60,0.3);
-        }
-        .price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-        }
-        .badge-popular {
-            background: #f39c12;
-            font-size: 0.9rem;
-            padding: 8px 20px;
-            border-radius: 50px;
-        }
-        .btn-buy {
-            background: var(--primary);
-            border: none;
-            padding: 14px 40px;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-        .btn-buy:hover {
-            background: #c0392b;
-            transform: scale(1.05);
-        }
-        footer {
-            background: var(--dark);
-        }
+        body { font-family: 'Roboto', sans-serif; }
+        h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">WIND<span style="color:#e74c3c">FIT PRO</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#programs">Chương trình</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-4 rounded-pill" href="https://zalo.me/090xxxxxxx">Chat Zalo ngay</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-4">Biến Đổi Cơ Thể Chỉ Trong 90 Ngày</h1>
-            <p class="lead mb-5 fs-4">Hơn 5.000+ học viên đã tăng 5-12kg cơ bắp hoặc giảm 8-15kg mỡ thừa với chương trình của WindFit Pro</p>
-            <a href="#programs" class="btn btn-danger btn-lg px-5 py-4 rounded-pill fw-bold">CHỌN CHƯƠNG TRÌNH NGAY</a>
+    <!-- Hero Section -->
+    <section class="relative h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://multipurposethemes.com/wp-content/uploads/2023/07/Fitness-Responsive-HTML-Template.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative text-center text-white px-6 max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Lên 5-10kg Cơ Sạch Chỉ Trong 6 Tháng!</h1>
+            <p class="text-xl md:text-3xl mb-8">Chương trình tập luyện + thực đơn Việt Nam dành riêng cho body gầy châu Á</p>
+            <p class="text-2xl mb-8">Tập home/gym chỉ 45 phút/buổi – Ăn cơm thoải mái, không đói!</p>
+            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg text-2xl mb-6">Đăng Ký Ngay – Giảm 50% Chỉ Hôm Nay</button>
+            <p class="text-xl">Khuyến mãi kết thúc sau: <span id="countdown" class="font-bold text-yellow-300"></span></p>
         </div>
     </section>
 
-    <!-- Programs -->
-    <section id="programs" class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">CHƯƠNG TRÌNH TẬP LUYỆN</h2>
-                <p class="lead text-muted">Chọn gói phù hợp với mục tiêu của bạn</p>
-            </div>
-
-            <div class="row g-5">
-                <!-- Beginner -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="program-card h-100 bg-light">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800" class="w-100" style="height: 280px; object-fit: cover;">
-                        <div class="p-4">
-                            <h3 class="fw-bold">Beginner Transform</h3>
-                            <p class="text-muted">Dành cho người mới bắt đầu, chưa biết gì về gym</p>
-                            <ul class="list-unstyled mb-4">
-                                <li>✔ 12 tuần tập luyện chi tiết</li>
-                                <li>✔ Giáo án ăn uống tăng cân/cơ nạc</li>
-                                <li>✔ Video hướng dẫn từng động tác</li>
-                                <li>✔ Nhóm hỗ trợ Zalo riêng</li>
-                            </ul>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
-                                    <span class="text-decoration-line-through text-muted">1.500.000đ</span><br>
-                                    <span class="price">690.000đ</span>
-                                </div>
-                                    <span class="badge badge-popular">BÁN CHẠY NHẤT</span>
-                                </div>
-                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="690000" data-name="Beginner Transform">
-                                <i class="fas fa-bolt me-2"></i>MUA NGAY - GIẢM 54%
-                            </button>
-                        </div>
-                    </div>
+    <!-- Benefits Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">Tại Sao VietFit Pro Phù Hợp Với Người Việt?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <img src="https://static.mothership.sg/1/2019/12/before-after.jpg" alt="Before After" class="rounded-lg mb-4 mx-auto">
+                    <h3 class="text-2xl font-bold mb-4">Giáo án cho body gầy Việt</h3>
+                    <p>Phase bulk sạch + cut mỡ, phù hợp ectomorph khó lên cơ</p>
                 </div>
-
-                <!-- Muscle Gain -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="program-card h-100 bg-light">
-                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800" class="w-100" style="height: 280px; object-fit: cover;">
-                        <div class="p-4">
-                            <h3 class="fw-bold">Muscle Master 90 Ngày</h3>
-                            <p class="text-muted">Tăng 7-12kg cơ bắp sạch (đã trừ mỡ)</p>
-                            <ul class="list-unstyled mb-4">
-                                <li>✔ 90 ngày tập luyện chuyên sâu</li>
-                                <li>✔ Thực đơn 3000-4500kcal/ngày</li>
-                                <li>✔ Kèm theo hướng dẫn dùng thực phẩm bổ sung</li>
-                                <li>✔ Hỗ trợ 1-1 với HLV trưởng</li>
-                                <li>✔ Cập nhật giáo án theo tiến độ</li>
-                            </ul>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
-                                    <span class="text-decoration-line-through text-muted">3.900.000đ</span><br>
-                                    <span class="price">1.590.000đ</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="1590000" data-name="Muscle Master 90 Ngày">
-                                <i class="fas fa-fire me-2"></i>MUA NGAY - CHỈ 17K/NGÀY
-                            </button>
-                        </div>
-                    </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <img src="http://static1.squarespace.com/static/5e06519ef43bd75de7803760/67698fb8a71817675503b5fe/67f00d1a9a056115d7d39323/1744314707799/Chicken+Pho.png?format=1500w" alt="Thực đơn Việt" class="rounded-lg mb-4 mx-auto h-48 object-cover">
+                    <h3 class="text-2xl font-bold mb-4">Thực đơn cơm Việt 3000kcal</h3>
+                    <p>Phở bò, cơm tấm gà, trứng – dễ mua, rẻ tiền</p>
                 </div>
-
-                <!-- Fat Loss -->
-                <div class="col-lg-4 col-md-6 mx-auto">
-                    <div class="program-card h-100 bg-light">
-                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800" class="w-100" style="height: 280px; object-fit: cover;">
-                        <div class="p-4">
-                            <h3 class="fw-bold">Shredded 60 Ngày</h3>
-                            <p class="text-muted">Giảm 8-15kg mỡ, lộ cơ bụng 6 múi</p>
-                            <ul class="list-unstyled mb-4">
-                                <li>✔ 60 ngày tập + cardio khoa học</li>
-                                <li>✔ Thực đơn cắt nét chi tiết</li>
-                                <li>✔ Hướng dẫn posing + chụp hình</li>
-                                <li>✔ Nhóm VIP riêng chỉ 30 người</li>
-                            </ul>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
-                                    <span class="text-decoration-line-through text-muted">2.900.000đ</span><br>
-                                    <span class="price">1.290.000đ</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-buy w-100 text-white buy-btn" data-price="1290000" data-name="Shredded 60 Ngày">
-                                <i class="fas fa-dumbbell me-2"></i>MUA NGAY - GIẢM 55%
-                            </button>
-                        </div>
-                    </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <i class="fas fa-users text-6xl text-green-600 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Support Zalo Group</h3>
+                    <p>Feedback hàng tuần từ coach + cộng đồng 1000+ thành viên</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <i class="fas fa-home text-6xl text-green-600 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Tập home không cần dụng cụ đắt</h3>
+                    <p>Chỉ tạ tay/tạ đơn hoặc bodyweight</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">Học Viên Thực Tế Đã Thành Công</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <img src="https://www.asiaone.com/sites/default/files/styles/article_top_image/public/original_images/Dec2019/041219_reversebodytransformation_ig4.jpg?itok=_f3uBu4W" alt="Testimonial 1" class="rounded-lg mb-4">
+                    <p class="text-lg italic">"Từ gầy nhom lên cân đối chỉ 4 tháng, ăn cơm thoải mái!" – Chị Lan, TP.HCM</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <img src="https://sm.mashable.com/t/mashable_sea/photo/default/cover_jmfs.1248.png" alt="Testimonial 2" class="rounded-lg mb-4">
+                    <p class="text-lg italic">"Lên 8kg cơ sạch, không còn tự ti mặc áo!" – Anh Minh, Hà Nội</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <img src="https://i.ytimg.com/vi/aHuHBEF93GQ/maxresdefault.jpg" alt="Testimonial 3" class="rounded-lg mb-4">
+                    <p class="text-lg italic">"Kết quả tự nhiên, không mệt mỏi!" – Anh Huy, Đà Nẵng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">Chọn Gói Phù Hợp Với Bạn</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                <div class="border-2 border-gray-300 p-10 rounded-xl">
+                    <h3 class="text-3xl font-bold mb-4">Monthly</h3>
+                    <p class="text-5xl font-bold mb-6">399k <span class="text-xl">/tháng</span></p>
+                    <button class="bg-gray-600 hover:bg-gray-700 text-white py-4 px-8 rounded-lg w-full">Chọn Gói</button>
+                </div>
+                <div class="border-4 border-red-600 p-10 rounded-xl scale-110 shadow-2xl">
+                    <p class="bg-red-600 text-white py-2 px-4 rounded-full inline-block mb-4">TIẾT KIỆM NHẤT</p>
+                    <h3 class="text-3xl font-bold mb-4">Yearly</h3>
+                    <p class="text-5xl font-bold mb-6">2.999k <span class="text-xl line-through text-gray-500">4.788k</span></p>
+                    <button class="bg-red-600 hover:bg-red-700 text-white py-4 px-8 rounded-lg w-full">Đăng Ký Ngay</button>
+                    <p class="mt-4 text-sm">Tặng bonus meal plan + abs challenge</p>
+                </div>
+                <div class="border-2 border-gray-300 p-10 rounded-xl">
+                    <h3 class="text-3xl font-bold mb-4">3 Tháng</h3>
+                    <p class="text-5xl font-bold mb-6">999k</p>
+                    <button class="bg-gray-600 hover:bg-gray-700 text-white py-4 px-8 rounded-lg w-full">Chọn Gói</button>
+                </div>
+            </div>
+            <p class="mt-12 text-2xl font-bold text-green-600">Bảo hành hoàn tiền 100% nếu không lên cơ sau 30 ngày!</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-white py-5">
-        <div class="container text-center">
-            <h3 class="fw-bold mb-3">WIND<span style="color:#e74c3c">FIT PRO</span></h3>
-            <p class="mb-4">Đã giúp hơn 5.000+ người Việt Nam thay đổi vóc dáng từ 2021</p>
-            <p>Hotline/Zalo: 0969487187 • Email: windfitpro@gmail.com</p>
-            <p>&copy; 2025 WindFit Pro. Tất cả quyền được bảo lưu.</p>
-        </div>
+    <footer class="bg-gray-900 text-white py-10 text-center">
+        <p>&copy; 2025 VietFit Pro - All rights reserved</p>
+        <p>Liên hệ Zalo: 090xxxxxxx | Email: support@vietfitpro.vn</p>
     </footer>
 
-    <!-- Stripe Checkout Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Countdown Timer Script -->
     <script>
-        const stripe = Stripe('pk_live_51...'); // Thay bằng Publishable key của bạn (hoặc dùng test key trước)
+        function startCountdown() {
+            const endTime = new Date();
+            endTime.setHours(endTime.getHours() + 24); // 24 giờ urgency
 
-        document.querySelectorAll('.buy-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const price = this.getAttribute('data-price');
-                const name = this.getAttribute('data-name');
+            const timer = setInterval(() => {
+                const now = new Date();
+                const diff = endTime - now;
 
-                stripe.redirectToCheckout({
-                    lineItems: [{ price: price === '690000' ? 'price_1Q...' : price === '1590000' ? 'price_1Q...' : 'price_1Q...', quantity: 1 }],
-                    mode: 'payment',
-                    successUrl: window.location.origin + '/success.html',
-                    cancelUrl: window.location.origin + '/cancel.html',
-                    customerEmail: '',
-                    billingAddressCollection: 'required',
-                    locale: 'vi'
-                });
-            });
-        });
+                if (diff <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = 'ĐÃ HẾT HẠN!';
+                    return;
+                }
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = `${hours} giờ ${minutes} phút ${seconds} giây`;
+            }, 1000);
+        }
+        startCountdown();
     </script>
 </body>
 </html>
