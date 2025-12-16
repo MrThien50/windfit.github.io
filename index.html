@@ -8,137 +8,244 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         body { font-family: 'Roboto', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
-        .wave-bg { position: relative; background: linear-gradient(to bottom, rgba(13, 110, 253, 0.8), rgba(0, 191, 191, 0.9)), url('https://media.gettyimages.com/id/1289550316/photo/abstract-water-aqua-blue-sea-wave-background-wavy-pattern-ocean-waves.jpg?s=170667a&w=gi&k=20&c=Ascmq2LtdPvWKiFgD7981U7Ne1SZIwo0lGNzkvUFcp8=') center/cover no-repeat; }
-        .wave-bottom svg { position: absolute; bottom: 0; width: 100%; height: 150px; }
-        .wave-bottom .wave { animation: wave 12s linear infinite; }
+        .wave-bg { 
+            background: linear-gradient(to bottom, rgba(13, 86, 140, 0.85), rgba(0, 150, 136, 0.95)), 
+            url('https://static.vecteezy.com/system/resources/previews/060/222/682/original/aerial-view-of-turquoise-ocean-waves-creating-a-stunning-natural-pattern-photo.jpg') center/cover no-repeat; 
+        }
+        .wave-bottom svg { position: absolute; bottom: 0; width: 100%; height: 200px; }
+        .wave path { fill: #ecfeff; animation: wave 15s linear infinite; }
         @keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .swiper { width: 100%; padding: 50px 0; }
+        .swiper-slide { display: flex; justify-content: center; }
     </style>
 </head>
 <body class="bg-gradient-to-b from-cyan-50 to-white text-gray-800">
 
-    <!-- Hero Section - Hiệu ứng nước + đẳng cấp -->
+    <!-- Hero Section -->
     <section class="relative wave-bg h-screen flex items-center justify-center text-center text-white overflow-hidden">
-        <div class="relative z-10 px-6 max-w-5xl" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 drop-shadow-2xl">THOÁT KHỎI BODY GẦY ỐM TỰ TI NGAY HÔM NAY!</h1>
-            <p class="text-2xl md:text-4xl font-bold mb-8 drop-shadow-xl">Lên 7-12kg Cơ Sạch Tự Nhiên – Dành Riêng Nam Việt Gầy Lâu Năm</p>
-            <p class="text-xl md:text-2xl mb-10">Cảm hứng từ huyền thoại Anatoly, Duy Nguyễn (The Hinh Online), GymLord – nhưng customize 100% cho body Việt!</p>
-            <button class="bg-white text-teal-700 hover:bg-teal-100 font-black py-5 px-12 rounded-full text-2xl shadow-2xl transform hover:scale-105 transition">Đăng Ký Ngay – Giảm 60% Chỉ Hôm Nay</button>
-            <p class="mt-6 text-xl font-bold">Ưu đãi kết thúc: <span id="countdown" class="text-yellow-300"></span></p>
+        <div class="relative z-10 px-6 max-w-6xl" data-aos="zoom-in">
+            <h1 class="text-5xl md:text-8xl font-black mb-8 drop-shadow-3xl">THOÁT KHỎI BODY GẦY ỐM TỰ TI – BIẾN ĐỔI THÀNH MẠNH MẼ!</h1>
+            <p class="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">Lên 7-12kg Cơ Sạch Tự Nhiên Chỉ Trong 6 Tháng – Dành Riêng Nam Việt</p>
+            <p class="text-xl md:text-3xl mb-12">Cảm hứng từ Anatoly, Duy Nguyễn (The Hinh Online), GymLord – Customize 100% cho body gầy châu Á!</p>
+            <button class="bg-white text-teal-700 hover:bg-cyan-100 font-black py-6 px-16 rounded-full text-3xl shadow-3xl transform hover:scale-110 transition duration-300">Đăng Ký Ngay – Giảm 60% Chỉ Hôm Nay</button>
+            <p class="mt-8 text-2xl font-bold">Ưu đãi kết thúc: <span id="countdown" class="text-yellow-300 text-3xl"></span></p>
         </div>
         <div class="wave-bottom">
-            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
-                <path class="wave fill-cyan-50" d="M0,0 C360,100 1080,50 1440,100 L1440,150 L0,150 Z"></path>
-                <path class="wave fill-cyan-100 opacity-60" d="M0,30 C360,130 1080,80 1440,130 L1440,150 L0,150 Z"></path>
+            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+                <path class="wave" d="M0,0 C360,150 1080,50 1440,100 L1440,200 L0,200 Z"></path>
+                <path class="wave opacity-50" style="animation-delay: -5s;" d="M0,50 C360,180 1080,80 1440,130 L1440,200 L0,200 Z"></path>
             </svg>
         </div>
     </section>
 
     <!-- Sai Lầm Section -->
-    <section class="py-20 bg-white" data-aos="fade-up">
+    <section class="py-32 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Những Sai Lầm Khiến Bạn Mãi Không Lên Cơ</h2>
-            <!-- Giữ grid sai lầm như trước, thêm data-aos="fade-up" delay -->
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-teal-700" data-aos="fade-up">Những Sai Lầm Phổ Biến Khiến Bạn Mãi Gầy Ốm, Không Lên Cơ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                <div class="bg-red-50 p-10 rounded-3xl shadow-2xl border border-red-300" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-times-circle text-7xl text-red-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">Tập random YouTube không phase</h3>
+                    <p class="text-xl">Dễ chấn thương, cơ bắp ì ạch mãi không phát triển</p>
+                </div>
+                <div class="bg-red-50 p-10 rounded-3xl shadow-2xl border border-red-300" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-times-circle text-7xl text-red-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">Ăn kiêng thiếu calo, đói meo</h3>
+                    <p class="text-xl">Metabolism chậm, không surplus → mãi không lên cân</p>
+                </div>
+                <div class="bg-red-50 p-10 rounded-3xl shadow-2xl border border-red-300" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-times-circle text-7xl text-red-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">Theo program Tây không hợp body Việt</h3>
+                    <p class="text-xl">Chicken khô khan → khó áp dụng, bỏ cuộc sớm</p>
+                </div>
+                <div class="bg-red-50 p-10 rounded-3xl shadow-2xl border border-red-300" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-times-circle text-7xl text-red-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">Tập quá sức dẫn đến burnout</h3>
+                    <p class="text-xl">Kiết sức, nghỉ dài → mất hết kết quả</p>
+                </div>
+                <div class="bg-red-50 p-10 rounded-3xl shadow-2xl border border-red-300" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-times-circle text-7xl text-red-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">Không track progress, guesswork</h3>
+                    <p class="text-xl">Không biết sai đâu → lặp lỗi mãi mãi</p>
+                </div>
+            </div>
+            <p class="text-4xl font-black mt-20 text-teal-700" data-aos="fade-up">WindFit Fix Tất Cả – Kết Quả Thực Tế, Khoa Học!</p>
         </div>
     </section>
 
-    <!-- Cảm Hứng Section - Mention YouTuber -->
-    <section class="py-20 bg-gradient-to-r from-teal-50 to-cyan-50">
+    <!-- Cảm Hứng Carousel -->
+    <section class="py-32 bg-gradient-to-r from-teal-50 to-cyan-50">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-800">Cảm Hứng Từ Các Huyền Thoại Natural</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div data-aos="zoom-in">
-                    <img src="https://i.ytimg.com/vi/z5NdRhPIwbw/maxresdefault.jpg" alt="Anatoly - Natural Powerlifter huyền thoại" class="rounded-2xl shadow-2xl mx-auto">
-                    <p class="mt-6 text-2xl font-bold">Anatoly – Sức mạnh tự nhiên không steroid</p>
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-teal-800" data-aos="fade-up">Cảm Hứng Từ Các Huyền Thoại Natural Bodybuilding</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-aos="zoom-in">
+                        <img src="https://shopbuilder.eu/images/bbcomment/files/anatoly-eros.jpg" alt="Anatoly powerlifter" class="rounded-3xl shadow-3xl mx-auto max-w-full h-auto">
+                        <p class="mt-8 text-3xl font-bold">Anatoly – Ông Vua Powerlifting Tự Nhiên</p>
+                    </div>
+                    <div class="swiper-slide" data-aos="zoom-in">
+                        <img src="https://i.ytimg.com/vi/HcLbL80HOow/hq720.jpg" alt="Duy Nguyễn transformation" class="rounded-3xl shadow-3xl mx-auto max-w-full h-auto">
+                        <p class="mt-8 text-3xl font-bold">Duy Nguyễn (The Hinh Online) – King Tăng Cơ Người Việt</p>
+                    </div>
+                    <div class="swiper-slide" data-aos="zoom-in">
+                        <img src="https://menshealth.com.au/wp-content/uploads/2025/03/1500x1000-Template-28-1024x683.jpg" alt="Asian fitness inspiration" class="rounded-3xl shadow-3xl mx-auto max-w-full h-auto">
+                        <p class="mt-8 text-3xl font-bold">Khanh Ong – Biểu Tượng Fitness Châu Á Hiện Đại</p>
+                    </div>
                 </div>
-                <div data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://i.ytimg.com/vi/aHuHBEF93GQ/hq720.jpg" alt="Duy Nguyễn The Hinh Online transformation" class="rounded-2xl shadow-2xl mx-auto">
-                    <p class="mt-6 text-2xl font-bold">Duy Nguyễn (The Hinh Online) – King tăng cơ người Việt gầy</p>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giáo Án Section -->
+    <section class="py-32 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-teal-700" data-aos="fade-up">Giáo Án WindFit – Chi Tiết, Khoa Học Với Core Plank Siêu Mạnh</h2>
+            <div class="grid md:grid-cols-3 gap-16 max-w-7xl mx-auto">
+                <div class="bg-cyan-50 p-12 rounded-3xl shadow-3xl" data-aos="fade-right">
+                    <img src="https://thumbs.dreamstime.com/b/fitness-training-athletic-sporty-man-doing-plank-exercise-gym-yoga-class-exercising-workout-70718580.jpg" alt="Plank Asian man" class="rounded-3xl mb-8 shadow-2xl">
+                    <h3 class="text-4xl font-bold text-teal-700 mb-6">Phase 1: Bulk Sạch (Tuần 1-8)</h3>
+                    <ul class="text-left text-xl space-y-4">
+                        <li>✅ 4 buổi/tuần Push-Pull-Legs + Full Body</li>
+                        <li>✅ Core hàng ngày: Plank 3-5 set x 60-150s progressive</li>
+                        <li>✅ Surplus 3200-3800kcal với món Việt</li>
+                        <li>✅ Video demo HD từng bài</li>
+                    </ul>
                 </div>
-                <div data-aos="zoom-in" data-aos-delay="400">
-                    <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2152573964/settings_images/fb6db0a-f321-0a38-7174-5b7ffc326be8_9f9772f2-8089-4962-a71f-d57acb4639ed.jpg" alt="Wanhee Kim minimalist training" class="rounded-2xl shadow-2xl mx-auto">
-                    <p class="mt-6 text-2xl font-bold">Wanhee Kim – Minimalist training hiệu quả cao</p>
+                <div class="bg-teal-700 text-white p-12 rounded-3xl shadow-3xl scale-105" data-aos="zoom-in">
+                    <img src="https://media.istockphoto.com/id/1296318064/photo/exercise-at-home.jpg?s=612x612&w=0&k=20&c=0rSYKzCve-BTkx7463OszLsI7yk5cbku0ecXpAkoHQ4=" alt="Advanced plank" class="rounded-3xl mb-8 opacity-90 shadow-2xl">
+                    <h3 class="text-4xl font-bold mb-6">Phase 2: Cut Mỡ Giữ Cơ (Tuần 9-16)</h3>
+                    <ul class="text-left text-xl space-y-4">
+                        <li>✅ 5 buổi/tuần + cardio nhẹ HIIT</li>
+                        <li>✅ Plank variation nâng cao (side, plank jack, weighted)</li>
+                        <li>✅ Deficit calo thông minh, giữ protein cao</li>
+                        <li>✅ Adjust theo progress thực tế</li>
+                    </ul>
+                </div>
+                <div class="bg-cyan-50 p-12 rounded-3xl shadow-3xl" data-aos="fade-left">
+                    <img src="https://thumbs.dreamstime.com/b/asian-food-vietnamese-pho-bo-soup-beef-meat-rice-noodles-broth-spices-served-white-bowl-traditional-vietnam-cuisine-182696206.jpg" alt="Phở bò Việt" class="rounded-3xl mb-8 shadow-2xl">
+                    <h3 class="text-4xl font-bold text-teal-700 mb-6">Meal Plan Mẫu Hàng Ngày (3500kcal)</h3>
+                    <ul class="text-left text-xl space-y-4">
+                        <li>✅ Sáng: Phở bò đầy thịt + 2 trứng</li>
+                        <li>✅ Trưa: Cơm tấm sườn nướng + rau</li>
+                        <li>✅ Tối: Cá hồi/cơm gà + snack sữa chua</li>
+                        <li>✅ Recipe book 100 món Việt bonus</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Giáo Án Chi Tiết Section - Thêm plank + program mẫu -->
-    <section class="py-20 bg-white">
+    <!-- Testimonials Carousel -->
+    <section class="py-32 bg-gradient-to-b from-cyan-50 to-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Giáo Án WindFit – Khoa Học, Chi Tiết, Có Plank Core Mạnh</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-cyan-50 p-10 rounded-3xl shadow-2xl" data-aos="fade-right">
-                    <img src="https://www.shutterstock.com/image-photo/plank-workout-strong-core-asian-260nw-2632628151.jpg" alt="Plank exercise Asian model" class="rounded-2xl mb-6">
-                    <h3 class="text-3xl font-bold text-teal-700">Phase 1: Bulk Sạch (Tuần 1-8)</h3>
-                    <ul class="text-left mt-6 space-y-4 text-lg">
-                        <li>✅ 4 buổi/tuần Push-Pull-Legs-Full</li>
-                        <li>✅ Core hàng ngày: Plank 3 set x 60-120s</li>
-                        <li>✅ Surplus 3000-3500kcal Việt</li>
-                    </ul>
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-teal-700" data-aos="fade-up">Hàng Ngàn Nam Việt Đã Biến Đổi Thành Công Với WindFit</h2>
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="bg-white p-12 rounded-3xl shadow-3xl max-w-2xl mx-auto">
+                            <img src="https://i.ytimg.com/vi/mDbieYIBtAA/hq720.jpg" alt="Transformation 1" class="rounded-3xl shadow-2xl">
+                            <p class="mt-10 text-2xl italic font-bold">"Từ 50kg gầy nhom lên 65kg cơ sạch chỉ 5 tháng!" – Anh Tuấn, Hà Nội</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white p-12 rounded-3xl shadow-3xl max-w-2xl mx-auto">
+                            <img src="https://menshealth.com.au/wp-content/uploads/2025/03/1500x1000-Template-28-1024x683.jpg" alt="Transformation 2" class="rounded-3xl shadow-2xl">
+                            <p class="mt-10 text-2xl italic font-bold">"Tự tin mặc áo bó, body cân đối như athlete!" – Anh Minh, TP.HCM</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white p-12 rounded-3xl shadow-3xl max-w-2xl mx-auto">
+                            <img src="https://thegaypassport.com/wp-content/uploads/2018/01/Hot-Asian-Guy-Bachelor-of-the-Week-Gay-Bangkok.jpg" alt="Transformation 3" class="rounded-3xl shadow-2xl">
+                            <p class="mt-10 text-2xl italic font-bold">"Kết quả tự nhiên mạnh mẽ như Anatoly!" – Anh Huy, Đà Nẵng</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-teal-600 text-white p-10 rounded-3xl shadow-2xl scale-110" data-aos="zoom-in">
-                    <img src="https://www.shutterstock.com/image-photo/young-asian-woman-sportswear-doing-600nw-2504443521.jpg" alt="Advanced plank variation" class="rounded-2xl mb-6 opacity-90">
-                    <h3 class="text-3xl font-bold">Phase 2: Cut Mỡ Giữ Cơ (Tuần 9-16)</h3>
-                    <ul class="text-left mt-6 space-y-4 text-lg">
-                        <li>✅ 5 buổi/tuần + cardio nhẹ</li>
-                        <li>✅ Plank variation nâng cao (side plank, plank jack)</li>
-                        <li>✅ Deficit calo thông minh, ăn phở bò healthy</li>
-                    </ul>
-                </div>
-                <div class="bg-cyan-50 p-10 rounded-3xl shadow-2xl" data-aos="fade-left">
-                    <img src="https://www.fodmapeveryday.com/wp-content/uploads/2017/06/Pho-closeup-copy-855x570.jpg" alt="Phở bò high protein" class="rounded-2xl mb-6">
-                    <h3 class="text-3xl font-bold text-teal-700">Meal Plan Mẫu Hàng Ngày</h3>
-                    <ul class="text-left mt-6 space-y-4 text-lg">
-                        <li>✅ Bữa sáng: Phở bò đầy thịt + trứng</li>
-                        <li>✅ Trưa: Cơm tấm sườn nướng</li>
-                        <li>✅ Tối: Cá hồi áp chảo + cơm gạo lứt</li>
-                    </ul>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials - Before After Việt realistic full HD -->
-    <section class="py-20 bg-gradient-to-b from-cyan-50 to-white">
+    <!-- Pricing Section -->
+    <section class="py-32 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Hàng Ngàn Nam Việt Đã Biến Đổi Thành Công</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left">
-                    <img src="https://i.ytimg.com/vi/aHuHBEF93GQ/hq720.jpg" alt="Before after transformation Việt" class="rounded-2xl">
-                    <p class="mt-8 text-xl italic font-bold">"Từ 52kg lên 68kg cơ sạch chỉ 6 tháng!" – Anh Tuấn, Hà Nội</p>
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-teal-700" data-aos="fade-up">Chọn Gói WindFit – Đầu Tư Cho Body Mạnh Mẽ</h2>
+            <div class="grid md:grid-cols-3 gap-16 max-w-6xl mx-auto">
+                <div class="border-4 border-teal-300 p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
+                    <h3 class="text-4xl font-bold mb-6 text-teal-700">Monthly</h3>
+                    <p class="text-6xl font-black mb-8 text-teal-600">399k <span class="text-2xl">/tháng</span></p>
+                    <ul class="text-left text-xl space-y-4 mb-10">
+                        <li>✅ Giáo án cơ bản + video demo</li>
+                        <li>✅ Meal plan Việt hàng tuần</li>
+                        <li>✅ Zalo group cộng đồng</li>
+                    </ul>
+                    <button class="bg-teal-600 hover:bg-teal-700 text-white py-5 px-12 rounded-full text-2xl w-full shadow-xl transform hover:scale-105 transition">Chọn Gói</button>
                 </div>
-                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left" data-aos-delay="200">
-                    <img src="https://t4.ftcdn.net/jpg/05/52/81/61/360_F_552816143_d7BgEqQoAqFsTnt5KaZKoSAdN8JCkl94.jpg" alt="Realistic Vietnamese gym transformation" class="rounded-2xl">
-                    <p class="mt-8 text-xl italic font-bold">"Tự tin mặc áo bó, không còn gầy nhom!" – Anh Minh, Sài Gòn</p>
+                <div class="border-6 border-teal-700 p-12 rounded-3xl shadow-3xl scale-110 bg-gradient-to-b from-teal-50 to-white" data-aos="zoom-in">
+                    <p class="bg-teal-700 text-white py-3 px-6 rounded-full inline-block mb-6 text-2xl">TIẾT KIỆM NHẤT + BONUS KHỦNG</p>
+                    <h3 class="text-4xl font-bold mb-6 text-teal-700">Yearly</h3>
+                    <p class="text-6xl font-black mb-8 text-teal-600">2.999k <span class="text-2xl line-through text-gray-500">/năm (tiết kiệm 50%)</span></p>
+                    <ul class="text-left text-xl space-y-4 mb-10">
+                        <li>✅ Giáo án cá nhân hóa full</li>
+                        <li>✅ Meal plan tùy chỉnh + recipe book</li>
+                        <li>✅ Priority support 1-1 Zalo</li>
+                        <li>✅ Bonus Abs challenge + Mini-course</li>
+                        <li>✅ Lifetime update</li>
+                    </ul>
+                    <button class="bg-teal-700 hover:bg-teal-800 text-white py-5 px-12 rounded-full text-2xl w-full shadow-xl transform hover:scale-105 transition">Đăng Ký Ngay</button>
                 </div>
-                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left" data-aos-delay="400">
-                    <img src="https://s.yimg.com/ny/api/res/1.2/FscbZmsGZUXAAp1PEwBpXw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05MDA-/https://media.zenfs.com/en/aol_insider_articles_823/c3e0df09593d9fe026457d142fd29ca2" alt="Natural transformation full HD" class="rounded-2xl">
-                    <p class="mt-8 text-xl italic font-bold">"Kết quả tự nhiên như Anatoly!" – Anh Huy, Đà Nẵng</p>
+                <div class="border-4 border-teal-300 p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
+                    <h3 class="text-4xl font-bold mb-6 text-teal-700">3 Tháng</h3>
+                    <p class="text-6xl font-black mb-8 text-teal-600">999k</p>
+                    <ul class="text-left text-xl space-y-4 mb-10">
+                        <li>✅ Giáo án đầy đủ + feedback</li>
+                        <li>✅ Meal plan cập nhật</li>
+                        <li>✅ Bonus mini-course tăng cân nhanh</li>
+                    </ul>
+                    <button class="bg-teal-600 hover:bg-teal-700 text-white py-5 px-12 rounded-full text-2xl w-full shadow-xl transform hover:scale-105 transition">Chọn Gói</button>
                 </div>
             </div>
+            <p class="mt-20 text-3xl font-black text-teal-600" data-aos="fade-up">Hoàn Tiền 100% Nếu Không Lên Cơ Sau 30 Ngày!</p>
         </div>
     </section>
-
-    <!-- Pricing giữ chi tiết + pro design -->
 
     <!-- Footer -->
+    <footer class="bg-teal-900 text-white py-16 text-center">
+        <p class="text-2xl font-bold mb-4">&copy; 2025 WindFit.vn – Tăng Cơ Mạnh Mẽ Tự Nhiên Cho Nam Việt</p>
+        <p class="text-xl">Liên hệ Zalo: 090xxxxxxx | Email: support@windfit.vn | Phù hợp mệnh Thủy – Năng lượng mát mẻ, bền vững</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({duration: 1200});</script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Countdown script như trước, set 24h
+        AOS.init({duration: 1200, once: true});
+        
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: { delay: 4000 },
+            pagination: { el: ".swiper-pagination", clickable: true }
+        });
+        
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            autoplay: { delay: 5000 },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            effect: "fade"
+        });
+        
         function startCountdown() {
             const endTime = new Date(Date.now() + 24*60*60*1000);
             setInterval(() => {
                 const diff = endTime - new Date();
                 if (diff <= 0) { document.getElementById('countdown').innerHTML = 'HẾT HẠN!'; return; }
-                const h = Math.floor(diff / 3600000);
-                const m = Math.floor((diff % 3600000) / 60000);
-                const s = Math.floor((diff % 60000) / 1000);
-                document.getElementById('countdown').innerHTML = `${h}h ${m}p ${s}s`;
+                const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+                const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+                const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+                document.getElementById('countdown').innerHTML = `${h}:${m}:${s}`;
             }, 1000);
         }
         startCountdown();
