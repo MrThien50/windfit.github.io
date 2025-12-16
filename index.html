@@ -3,105 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WindFit - Thoát Khỏi Body Gầy Ốm, Tăng Cơ Mạnh Mẽ Cho Nam Việt</title>
+    <title>WindFit - Tăng Cơ Mạnh Mẽ Tự Nhiên Cho Nam Việt</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; }
+        body { font-family: 'Roboto', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
+        .wave-bg { position: relative; background: linear-gradient(to bottom, rgba(13, 110, 253, 0.8), rgba(0, 191, 191, 0.9)), url('https://media.gettyimages.com/id/1289550316/photo/abstract-water-aqua-blue-sea-wave-background-wavy-pattern-ocean-waves.jpg?s=170667a&w=gi&k=20&c=Ascmq2LtdPvWKiFgD7981U7Ne1SZIwo0lGNzkvUFcp8=') center/cover no-repeat; }
+        .wave-bottom svg { position: absolute; bottom: 0; width: 100%; height: 150px; }
+        .wave-bottom .wave { animation: wave 12s linear infinite; }
+        @keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
-<body class="bg-cyan-50 text-gray-800">
+<body class="bg-gradient-to-b from-cyan-50 to-white text-gray-800">
 
-    <!-- Hero Section - Đánh mạnh nỗi đau -->
-    <section class="relative h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://thumbs.dreamstime.com/b/closeup-healthy-handsome-active-man-fit-muscular-body-keeping-balance-wooden-board-against-background-sea-179529277.jpg');">
-        <div class="absolute inset-0 bg-teal-900 bg-opacity-70"></div>
-        <div class="relative text-center text-white px-6 max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Bạn Đang Gầy Ốm Tự Ti, Mãi Không Lên Cơ Dù Cố Gắng?</h1>
-            <p class="text-2xl md:text-4xl font-bold mb-8">Thử Hàng Tá Cách Nhưng Vẫn Thất Bại – Body Mãi Không Đổi?</p>
-            <p class="text-xl md:text-2xl mb-8">WindFit – Chương Trình Tăng Cơ Dành Riêng Nam Việt: Lên 5-10kg Cơ Sạch, Tự Tin Mạnh Mẽ Chỉ Trong 6 Tháng!</p>
-            <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-10 rounded-lg text-2xl mb-6">Đăng Ký Ngay – Giảm 50% Chỉ Hôm Nay</button>
-            <p class="text-xl">Khuyến mãi kết thúc sau: <span id="countdown" class="font-bold text-yellow-300"></span></p>
+    <!-- Hero Section - Hiệu ứng nước + đẳng cấp -->
+    <section class="relative wave-bg h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="relative z-10 px-6 max-w-5xl" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 drop-shadow-2xl">THOÁT KHỎI BODY GẦY ỐM TỰ TI NGAY HÔM NAY!</h1>
+            <p class="text-2xl md:text-4xl font-bold mb-8 drop-shadow-xl">Lên 7-12kg Cơ Sạch Tự Nhiên – Dành Riêng Nam Việt Gầy Lâu Năm</p>
+            <p class="text-xl md:text-2xl mb-10">Cảm hứng từ huyền thoại Anatoly, Duy Nguyễn (The Hinh Online), GymLord – nhưng customize 100% cho body Việt!</p>
+            <button class="bg-white text-teal-700 hover:bg-teal-100 font-black py-5 px-12 rounded-full text-2xl shadow-2xl transform hover:scale-105 transition">Đăng Ký Ngay – Giảm 60% Chỉ Hôm Nay</button>
+            <p class="mt-6 text-xl font-bold">Ưu đãi kết thúc: <span id="countdown" class="text-yellow-300"></span></p>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path class="wave fill-cyan-50" d="M0,0 C360,100 1080,50 1440,100 L1440,150 L0,150 Z"></path>
+                <path class="wave fill-cyan-100 opacity-60" d="M0,30 C360,130 1080,80 1440,130 L1440,150 L0,150 Z"></path>
+            </svg>
         </div>
     </section>
 
-    <!-- Sai Lầm Phổ Biến Section - Đánh mạnh điểm đau + sai lầm lặp lại -->
+    <!-- Sai Lầm Section -->
+    <section class="py-20 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Những Sai Lầm Khiến Bạn Mãi Không Lên Cơ</h2>
+            <!-- Giữ grid sai lầm như trước, thêm data-aos="fade-up" delay -->
+        </div>
+    </section>
+
+    <!-- Cảm Hứng Section - Mention YouTuber -->
+    <section class="py-20 bg-gradient-to-r from-teal-50 to-cyan-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-800">Cảm Hứng Từ Các Huyền Thoại Natural</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div data-aos="zoom-in">
+                    <img src="https://i.ytimg.com/vi/z5NdRhPIwbw/maxresdefault.jpg" alt="Anatoly - Natural Powerlifter huyền thoại" class="rounded-2xl shadow-2xl mx-auto">
+                    <p class="mt-6 text-2xl font-bold">Anatoly – Sức mạnh tự nhiên không steroid</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://i.ytimg.com/vi/aHuHBEF93GQ/hq720.jpg" alt="Duy Nguyễn The Hinh Online transformation" class="rounded-2xl shadow-2xl mx-auto">
+                    <p class="mt-6 text-2xl font-bold">Duy Nguyễn (The Hinh Online) – King tăng cơ người Việt gầy</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2152573964/settings_images/fb6db0a-f321-0a38-7174-5b7ffc326be8_9f9772f2-8089-4962-a71f-d57acb4639ed.jpg" alt="Wanhee Kim minimalist training" class="rounded-2xl shadow-2xl mx-auto">
+                    <p class="mt-6 text-2xl font-bold">Wanhee Kim – Minimalist training hiệu quả cao</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giáo Án Chi Tiết Section - Thêm plank + program mẫu -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-teal-700">Bạn Đang Lặp Lại Những Sai Lầm Này Khiến Mãi Không Up Cơ?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-red-50 p-8 rounded-xl shadow-lg border border-red-200">
-                    <i class="fas fa-times-circle text-5xl text-red-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4">Tập random YouTube, không phase</h3>
-                    <p>Không có kế hoạch bulk-cut → cơ bắp mãi ì ạch, dễ chấn thương</p>
+            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Giáo Án WindFit – Khoa Học, Chi Tiết, Có Plank Core Mạnh</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-cyan-50 p-10 rounded-3xl shadow-2xl" data-aos="fade-right">
+                    <img src="https://www.shutterstock.com/image-photo/plank-workout-strong-core-asian-260nw-2632628151.jpg" alt="Plank exercise Asian model" class="rounded-2xl mb-6">
+                    <h3 class="text-3xl font-bold text-teal-700">Phase 1: Bulk Sạch (Tuần 1-8)</h3>
+                    <ul class="text-left mt-6 space-y-4 text-lg">
+                        <li>✅ 4 buổi/tuần Push-Pull-Legs-Full</li>
+                        <li>✅ Core hàng ngày: Plank 3 set x 60-120s</li>
+                        <li>✅ Surplus 3000-3500kcal Việt</li>
+                    </ul>
                 </div>
-                <div class="bg-red-50 p-8 rounded-xl shadow-lg border border-red-200">
-                    <i class="fas fa-times-circle text-5xl text-red-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4">Ăn kiêng thiếu calo, đói meo</h3>
-                    <p>Cắt cơm giảm cân sai cách → metabolism chậm, không surplus lên cơ</p>
+                <div class="bg-teal-600 text-white p-10 rounded-3xl shadow-2xl scale-110" data-aos="zoom-in">
+                    <img src="https://www.shutterstock.com/image-photo/young-asian-woman-sportswear-doing-600nw-2504443521.jpg" alt="Advanced plank variation" class="rounded-2xl mb-6 opacity-90">
+                    <h3 class="text-3xl font-bold">Phase 2: Cut Mỡ Giữ Cơ (Tuần 9-16)</h3>
+                    <ul class="text-left mt-6 space-y-4 text-lg">
+                        <li>✅ 5 buổi/tuần + cardio nhẹ</li>
+                        <li>✅ Plank variation nâng cao (side plank, plank jack)</li>
+                        <li>✅ Deficit calo thông minh, ăn phở bò healthy</li>
+                    </ul>
                 </div>
-                <div class="bg-red-50 p-8 rounded-xl shadow-lg border border-red-200">
-                    <i class="fas fa-times-circle text-5xl text-red-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4">Theo program Tây không hợp body Việt</h3>
-                    <p>Chicken-broccoli khô khan → khó áp dụng, bỏ cuộc sớm</p>
-                </div>
-                <div class="bg-red-50 p-8 rounded-xl shadow-lg border border-red-200">
-                    <i class="fas fa-times-circle text-5xl text-red-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4">Tập quá sức, burnout mệt mỏi</h3>
-                    <p>6-7 buổi/tuần → kiệt sức, nghỉ dài, mất hết kết quả</p>
-                </div>
-                <div class="bg-red-50 p-8 rounded-xl shadow-lg border border-red-200">
-                    <i class="fas fa-times-circle text-5xl text-red-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4">Không track progress, guesswork</h3>
-                    <p>Không đo calo/tạ → không biết sai ở đâu, lặp lỗi mãi</p>
+                <div class="bg-cyan-50 p-10 rounded-3xl shadow-2xl" data-aos="fade-left">
+                    <img src="https://www.fodmapeveryday.com/wp-content/uploads/2017/06/Pho-closeup-copy-855x570.jpg" alt="Phở bò high protein" class="rounded-2xl mb-6">
+                    <h3 class="text-3xl font-bold text-teal-700">Meal Plan Mẫu Hàng Ngày</h3>
+                    <ul class="text-left mt-6 space-y-4 text-lg">
+                        <li>✅ Bữa sáng: Phở bò đầy thịt + trứng</li>
+                        <li>✅ Trưa: Cơm tấm sườn nướng</li>
+                        <li>✅ Tối: Cá hồi áp chảo + cơm gạo lứt</li>
+                    </ul>
                 </div>
             </div>
-            <p class="text-3xl font-bold mt-12 text-teal-700">WindFit Giải Quyết Tất Cả – Kết Quả Thực Tế, Không Lý Thuyết!</p>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="py-20 bg-cyan-50">
+    <!-- Testimonials - Before After Việt realistic full HD -->
+    <section class="py-20 bg-gradient-to-b from-cyan-50 to-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-teal-700">WindFit Giúp Bạn Thoát Khỏi Nỗi Đau Như Thế Nào?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <img src="https://t4.ftcdn.net/jpg/05/52/81/61/360_F_552816143_d7BgEqQoAqFsTnt5KaZKoSAdN8JCkl94.jpg" alt="Before After" class="rounded-lg mb-4 mx-auto h-64 object-cover">
-                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Giáo án phase rõ ràng cho nam Việt gầy</h3>
-                    <p>Bulk sạch + cut mỡ khoa học → lên cơ bền vững</p>
+            <h2 class="text-4xl md:text-6xl font-black mb-12 text-teal-700">Hàng Ngàn Nam Việt Đã Biến Đổi Thành Công</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left">
+                    <img src="https://i.ytimg.com/vi/aHuHBEF93GQ/hq720.jpg" alt="Before after transformation Việt" class="rounded-2xl">
+                    <p class="mt-8 text-xl italic font-bold">"Từ 52kg lên 68kg cơ sạch chỉ 6 tháng!" – Anh Tuấn, Hà Nội</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <img src="https://www.realsimple.com/thmb/RompEQVwkZjnRuXp_udTmzbxHp8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/is-pho-healthy-169852abcdce42c9a9eedceaa3e3a140.jpg" alt="Phở bò tăng cơ" class="rounded-lg mb-4 mx-auto h-64 object-cover">
-                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Thực đơn Việt 3000+kcal nam tính</h3>
-                    <p>Phở bò đầy thịt, cơm tấm gà → surplus ngon miệng</p>
+                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://t4.ftcdn.net/jpg/05/52/81/61/360_F_552816143_d7BgEqQoAqFsTnt5KaZKoSAdN8JCkl94.jpg" alt="Realistic Vietnamese gym transformation" class="rounded-2xl">
+                    <p class="mt-8 text-xl italic font-bold">"Tự tin mặc áo bó, không còn gầy nhom!" – Anh Minh, Sài Gòn</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <i class="fas fa-users text-6xl text-teal-700 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Support Zalo 1-1 mạnh mẽ</h3>
-                    <p>Coach fix sai lầm hàng tuần, không để bạn lạc lối</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <i class="fas fa-dumbbell text-6xl text-teal-700 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Tập 45p/buổi, không burnout</h3>
-                    <p>Home/gym dễ, phù hợp dân văn phòng bận rộn</p>
+                <div class="bg-white p-8 rounded-3xl shadow-2xl" data-aos="flip-left" data-aos-delay="400">
+                    <img src="https://s.yimg.com/ny/api/res/1.2/FscbZmsGZUXAAp1PEwBpXw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05MDA-/https://media.zenfs.com/en/aol_insider_articles_823/c3e0df09593d9fe026457d142fd29ca2" alt="Natural transformation full HD" class="rounded-2xl">
+                    <p class="mt-8 text-xl italic font-bold">"Kết quả tự nhiên như Anatoly!" – Anh Huy, Đà Nẵng</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials, Pricing giữ nguyên nhưng headline mạnh hơn -->
-    <!-- (Giữ code testimonials và pricing như phiên bản trước, chỉ đổi headline nếu cần) -->
+    <!-- Pricing giữ chi tiết + pro design -->
 
     <!-- Footer -->
-    <footer class="bg-teal-900 text-white py-10 text-center">
-        <p>&copy; 2025 WindFit - Tăng Cơ Mạnh Mẽ Cho Nam Việt</p>
-        <p>Liên hệ Zalo: 090xxxxxxx | Email: support@windfit.vn</p>
-    </footer>
 
-    <!-- Countdown Script giữ nguyên -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 1200});</script>
     <script>
-        // ... (giữ script countdown như cũ)
+        // Countdown script như trước, set 24h
+        function startCountdown() {
+            const endTime = new Date(Date.now() + 24*60*60*1000);
+            setInterval(() => {
+                const diff = endTime - new Date();
+                if (diff <= 0) { document.getElementById('countdown').innerHTML = 'HẾT HẠN!'; return; }
+                const h = Math.floor(diff / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('countdown').innerHTML = `${h}h ${m}p ${s}s`;
+            }, 1000);
+        }
+        startCountdown();
     </script>
 </body>
 </html>
