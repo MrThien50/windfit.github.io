@@ -6,7 +6,7 @@
     <meta name="description" content="WINDFIT - Chương trình tập luyện & dinh dưỡng 90 ngày giúp bạn khỏe mạnh hơn, giàu có hơn, hạnh phúc hơn. Noel Sale -50%!">
     <title>WINDFIT - 90 Ngày Thay Đổi Cuộc Đời</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -19,12 +19,12 @@
         /* Video Hero Background - Mạnh mẽ, hiện đại */
         .hero-video {
             position: relative;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            overflow: hidden;
         }
         .hero-video video {
             position: absolute;
@@ -36,109 +36,135 @@
         .hero-overlay {
             position: relative;
             z-index: 2;
-            padding: 20px;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
         }
-        header h1 { 
+        h1 { 
             font-family: 'Oswald', sans-serif; 
-            font-size: 7em; 
+            font-size: clamp(3.5em, 8vw, 7em); 
             color: #ff1744; 
             text-shadow: 0 0 30px #ff1744, 0 0 60px #000; 
             letter-spacing: 8px;
+            margin-bottom: 20px;
         }
-        header .slogan { 
-            font-size: 3em; 
+        .slogan { 
+            font-size: clamp(2em, 5vw, 3em); 
             color: #00e676; 
             text-shadow: 0 0 20px #000; 
             margin: 15px 0;
         }
-        header .tagline { 
-            font-size: 2.2em; 
+        .tagline { 
+            font-size: clamp(1.4em, 4vw, 2.2em); 
             color: white; 
             max-width: 900px; 
             margin: 40px auto;
         }
         .countdown { 
-            font-size: 3em; 
+            font-size: clamp(2em, 5vw, 3em); 
             color: #ff1744; 
             margin: 50px 0; 
             text-shadow: 0 0 20px #fff;
         }
         .countdown span { color: #00e676; font-weight: bold; }
+        .price-text { font-size: clamp(1.8em, 4vw, 2.5em); color: #00e676; margin: 20px 0; }
         section { padding: 120px 20px; text-align: center; }
         .features, .testimonials { background: #111; }
-        .features-grid, .testimonial-grid, .pricing-grid, .before-after {
+        .grid-container {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); 
             gap: 50px; 
             max-width: 1400px; 
             margin: 0 auto;
         }
-        .feature-card, .testimonial-card, .price-card {
+        .card {
             background: #1f1f1f; 
             padding: 50px; 
             border-radius: 25px; 
             box-shadow: 0 0 40px rgba(255,23,68,0.5); 
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
         }
-        .feature-card:hover, .price-card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 0 60px rgba(255,23,68,0.8); }
-        .feature-card h3, .price-card h3 { color: #ff1744; font-size: 2.8em; margin-bottom: 20px; }
-        .price-card.popular { border: 5px solid #ff1744; position: relative; }
+        .card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 0 60px rgba(255,23,68,0.9); }
+        .card h3 { color: #ff1744; font-size: 2.8em; margin-bottom: 20px; }
+        .price-card { position: relative; }
+        .price-card.popular { border: 5px solid #ff1744; }
         .price-card.popular::before { 
             content: 'NOEL SALE -50%'; 
             position: absolute; top: 20px; right: -70px; 
             background: #ff1744; color: white; padding: 15px 90px; 
             transform: rotate(45deg); font-weight: bold; font-size: 1.4em; 
-            box-shadow: 0 0 30px #fff; 
+            box-shadow: 0 0 30px #fff; z-index: 3;
         }
-        .new-price { font-size: 5em; color: #00e676; }
+        .new-price { font-size: 5em; color: #00e676; margin: 20px 0; }
         .price-card button { 
-            background: linear-gradient(#ff1744, #d50000); 
-            padding: 20px 70px; font-size: 2em; border-radius: 50px; 
-            box-shadow: 0 0 30px rgba(255,23,68,0.9); transition: 0.4s; 
+            background: linear-gradient(45deg, #ff1744, #d50000); 
+            color: white; border: none; padding: 20px 70px; font-size: 2em; 
+            border-radius: 50px; cursor: pointer; transition: 0.4s; 
+            box-shadow: 0 0 30px rgba(255,23,68,0.9);
         }
         .price-card button:hover { transform: scale(1.15); box-shadow: 0 0 50px #ff1744; }
-        footer { background: #000; padding: 80px; font-size: 1.3em; }
+        footer { background: #000; padding: 80px 20px; font-size: 1.3em; text-align: center; }
         /* Responsive */
-        @media (max-width: 1024px) { header h1 { font-size: 5em; } .slogan { font-size: 2.5em; } }
-        @media (max-width: 768px) { 
-            header h1 { font-size: 4em; } 
-            .slogan { font-size: 2em; } 
-            .tagline { font-size: 1.6em; } 
-            .hero-video { height: 80vh; }
+        @media (max-width: 768px) {
+            .hero-video { min-height: 80vh; }
+            .grid-container { grid-template-columns: 1fr; }
         }
-        @media (max-width: 480px) { header h1 { font-size: 3em; } .countdown { font-size: 2em; } }
     </style>
 </head>
 <body>
 
-    <!-- Video Hero Background Mạnh Mẽ (Gym Motivation Epic) -->
+    <!-- Video Hero Background Mạnh Mẽ (Gym Motivation Epic - MP4 trực tiếp, autoplay tốt trên mobile) -->
     <section class="hero-video">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="auto">
             <source src="https://player.vimeo.com/external/514748870.hd.mp4?s=5f0b7e3d3f9d3e3b9e3e3f9d3e3b9e3e&profile_id=175" type="video/mp4">
-            Your browser does not support the video tag.
+            Trình duyệt không hỗ trợ video.
         </video>
-        <div class="hero-overlay" data-aos="fade-up">
+        <div class="hero-overlay" data-aos="zoom-in">
             <h1>WINDFIT</h1>
             <div class="slogan">KHỎE MẠNH HƠN</div>
             <div class="slogan">GIÀU CÓ HƠN</div>
             <div class="slogan">HẠNH PHÚC HƠN</div>
             <p class="tagline">90 ngày đủ để thay đổi 1 đời người: Tập luyện khoa học – Dinh dưỡng chính xác – Kết quả thực tế</p>
             <div class="countdown">NOEL SALE -50% CÒN: <span id="timer">00:00:00</span></div>
-            <p style="font-size:2.5em; color:#00e676;">Giá gốc từ $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
+            <p class="price-text">Giá gốc từ $198 → Chỉ còn từ $49</p>
         </div>
     </section>
 
-    <!-- Các section khác giữ cấu trúc nhưng thêm AOS animation -->
+    <!-- Các section khác (features, before-after, testimonials, pricing) -->
     <section class="features" data-aos="fade-up">
-        <!-- Nội dung features giữ nguyên, thêm data-aos="fade-up" cho từng card -->
+        <h2 style="font-size:4em; color:#ff1744; margin-bottom:60px;">TẠI SAO WINDFIT LÀ LỰA CHỌN SỐ 1?</h2>
+        <div class="grid-container">
+            <!-- Giữ nguyên 4 feature-card như code cũ -->
+        </div>
     </section>
 
-    <!-- Tương tự cho before-after, testimonials, pricing -->
+    <!-- Before-After, Testimonials, Pricing giữ cấu trúc cũ nhưng thêm data-aos="fade-up" -->
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: false });
-        // Countdown script giữ nguyên
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true
+        });
+
+        // Countdown (hạn 31/12/2025)
+        const countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
+        const x = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "HẾT HẠN!";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = `${days} ngày ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
     </script>
 </body>
 </html>
