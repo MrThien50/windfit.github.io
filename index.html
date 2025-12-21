@@ -1,323 +1,277 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WINDFIT - Chương trình tập luyện & dinh dưỡng 90 ngày giúp bạn khỏe mạnh hơn, giàu có hơn, hạnh phúc hơn. Noel Sale -50%!">
-    <title>WINDFIT - 90 Ngày Thay Đổi Cuộc Đời</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <!-- Particle.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            background: #0a0a0a; 
-            color: #e0e0e0; 
-            line-height: 1.6; 
-            overflow-x: hidden;
-        }
-        /* Particles Container - Overlay toàn trang */
-        #particles-js {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-        /* Hero Video Background */
-        .hero-video {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero-video video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .hero-overlay {
-            position: relative;
-            z-index: 3;
-            padding: 40px 20px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 20px;
-            max-width: 90%;
-        }
-        h1 { 
-            font-family: 'Oswald', sans-serif; 
-            font-size: clamp(3em, 8vw, 7em); 
-            color: #ff1744; 
-            text-shadow: 0 0 30px #ff1744, 0 0 60px #000; 
-            letter-spacing: 8px;
-            margin-bottom: 20px;
-        }
-        .slogan { 
-            font-size: clamp(1.8em, 5vw, 3em); 
-            color: #00e676; 
-            text-shadow: 0 0 20px #000; 
-            margin: 15px 0;
-        }
-        .tagline { 
-            font-size: clamp(1.4em, 4vw, 2.2em); 
-            color: white; 
-            max-width: 900px; 
-            margin: 40px auto;
-        }
-        .countdown { 
-            font-size: clamp(2em, 5vw, 3em); 
-            color: #ff1744; 
-            margin: 50px 0; 
-            text-shadow: 0 0 20px #fff;
-        }
-        .countdown span { color: #00e676; font-weight: bold; }
-        .price-text { font-size: clamp(1.8em, 4vw, 2.5em); color: #00e676; margin: 20px 0; }
-        section { padding: 120px 20px; text-align: center; position: relative; z-index: 2; }
-        .features, .testimonials { background: #111; }
-        .grid-container {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); 
-            gap: 50px; 
-            max-width: 1400px; 
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        .card {
-            background: rgba(31,31,31,0.9); 
-            padding: 50px; 
-            border-radius: 25px; 
-            box-shadow: 0 0 40px rgba(255,23,68,0.5); 
-            transition: all 0.5s ease;
-            backdrop-filter: blur(5px);
-        }
-        .card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 0 60px rgba(255,23,68,0.9); }
-        .card h3 { color: #ff1744; font-size: 2.8em; margin-bottom: 20px; }
-        .ba-pair img { width: 100%; border-radius: 20px; box-shadow: 0 0 30px rgba(255,255,255,0.3); margin: 15px 0; }
-        .price-card { position: relative; overflow: hidden; }
-        .price-card.popular { border: 5px solid #ff1744; }
-        .price-card.popular::before { 
-            content: 'NOEL SALE -50%'; 
-            position: absolute; top: 20px; right: -70px; 
-            background: #ff1744; color: white; padding: 15px 90px; 
-            transform: rotate(45deg); font-weight: bold; font-size: 1.4em; 
-            box-shadow: 0 0 30px #fff; z-index: 3;
-        }
-        .new-price { font-size: clamp(3em, 8vw, 5em); color: #00e676; margin: 20px 0; }
-        .old-price { text-decoration: line-through; color: #666; font-size: 2em; }
-        .price-card ul { list-style: none; margin: 40px 0; text-align: left; font-size: 1.3em; }
-        .price-card li { margin: 20px 0; position: relative; padding-left: 40px; }
-        .price-card li::before { content: '✦'; color: #ff1744; font-size: 1.8em; position: absolute; left: 0; }
-        .price-card button { 
-            background: linear-gradient(45deg, #ff1744, #d50000); 
-            color: white; border: none; padding: 20px 70px; font-size: 2em; 
-            border-radius: 50px; cursor: pointer; transition: 0.4s; 
-            box-shadow: 0 0 30px rgba(255,23,68,0.9);
-        }
-        .price-card button:hover { transform: scale(1.15); box-shadow: 0 0 50px #ff1744; }
-        footer { background: #000; padding: 80px 20px; font-size: 1.3em; text-align: center; position: relative; z-index: 2; }
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-video { min-height: 80vh; }
-            .grid-container { grid-template-columns: 1fr; }
-            .price-card.popular::before { right: -50px; padding: 10px 70px; font-size: 1.2em; }
-        }
-        @media (max-width: 480px) {
-            .hero-overlay { padding: 20px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="WINDFIT – Chương trình tập luyện & dinh dưỡng 90 ngày. Noel Sale -50%!">
+<title>WINDFIT – 90 Ngày Thay Đổi Cuộc Đời</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- AOS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<!-- Particles -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Roboto',sans-serif;
+    background:#0a0a0a;
+    color:#e0e0e0;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* Particles */
+#particles-js{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+}
+
+/* Hero */
+.hero-video{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    z-index:1;
+}
+.hero-video video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+.hero-overlay{
+    background:rgba(0,0,0,.6);
+    padding:40px 25px;
+    border-radius:20px;
+    max-width:1000px;
+}
+
+/* Typography */
+h1{
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(3em,8vw,6em);
+    color:#ff1744;
+    letter-spacing:6px;
+    text-shadow:0 0 30px #ff1744;
+}
+.slogan{
+    font-size:clamp(1.6em,4vw,2.6em);
+    color:#00e676;
+}
+.tagline{
+    font-size:clamp(1.2em,3vw,1.8em);
+    margin:30px auto;
+    max-width:900px;
+}
+.countdown{
+    font-size:clamp(1.6em,4vw,2.5em);
+    color:#ff1744;
+    margin:30px 0;
+}
+.countdown span{color:#00e676;font-weight:bold}
+
+section{
+    padding:100px 20px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+}
+.features,.testimonials{background:#111}
+
+/* Grid */
+.grid-container{
+    max-width:1400px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:40px;
+}
+
+/* Cards */
+.card{
+    background:rgba(31,31,31,.95);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 0 30px rgba(255,23,68,.4);
+    transition:.4s;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 50px rgba(255,23,68,.8);
+}
+.card h3{
+    color:#ff1744;
+    font-size:2.2em;
+    margin-bottom:15px;
+}
+
+/* Pricing */
+.price-card.popular{
+    border:4px solid #ff1744;
+    position:relative;
+}
+.price-card.popular::before{
+    content:"NOEL SALE -50%";
+    position:absolute;
+    top:20px;
+    right:-60px;
+    transform:rotate(45deg);
+    background:#ff1744;
+    color:#fff;
+    padding:10px 70px;
+    font-weight:bold;
+}
+
+.old-price{text-decoration:line-through;color:#777;font-size:1.8em}
+.new-price{font-size:3em;color:#00e676}
+
+.price-card ul{
+    list-style:none;
+    text-align:left;
+    margin:30px 0;
+}
+.price-card li{
+    margin:15px 0;
+    padding-left:30px;
+    position:relative;
+}
+.price-card li::before{
+    content:"✔";
+    color:#ff1744;
+    position:absolute;
+    left:0;
+}
+
+button{
+    background:linear-gradient(45deg,#ff1744,#d50000);
+    color:#fff;
+    border:none;
+    padding:18px 50px;
+    font-size:1.6em;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{transform:scale(1.1)}
+
+footer{
+    background:#000;
+    padding:60px 20px;
+    text-align:center;
+}
+
+/* Mobile */
+@media(max-width:768px){
+    section{padding:70px 15px}
+    .hero-overlay{padding:25px}
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Particles.js Canvas Overlay -->
-    <div id="particles-js"></div>
+<div id="particles-js"></div>
 
-    <!-- Video Hero Background -->
-    <section class="hero-video">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="https://player.vimeo.com/external/514748870.hd.mp4?s=5f0b7e3d3f9d3e3b9e3e3f9d3e3b9e3e&profile_id=175" type="video/mp4">
-            Trình duyệt không hỗ trợ video.
-        </video>
-        <div class="hero-overlay" data-aos="zoom-in">
-            <h1>WINDFIT</h1>
-            <div class="slogan">KHỎE MẠNH HƠN</div>
-            <div class="slogan">GIÀU CÓ HƠN</div>
-            <div class="slogan">HẠNH PHÚC HƠN</div>
-            <p class="tagline">90 ngày đủ để thay đổi 1 đời người: Tập luyện khoa học – Dinh dưỡng chính xác – Kết quả thực tế</p>
-            <div class="countdown">NOEL SALE -50% CÒN: <span id="timer">00:00:00</span></div>
-            <p class="price-text">Giá gốc từ $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
-        </div>
-    </section>
+<section class="hero-video">
+<video autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+<source src="https://cdn.coverr.co/videos/coverr-fitness-training-1600.mp4" type="video/mp4">
+</video>
 
-    <!-- Features -->
-    <section class="features" data-aos="fade-up">
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:60px;">TẠI SAO WINDFIT LÀ LỰA CHỌN SỐ 1?</h2>
-        <div class="grid-container">
-            <div class="card" data-aos="fade-up">
-                <h3>TẬP LUYỆN KHOA HỌC</h3>
-                <p>Chương trình sức mạnh 3-4 ngày/tuần với progressive overload. Cardio, chạy nước rút, thể thao. Xây cơ săn chắc, đốt mỡ tối ưu.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <h3>DINH DƯỠNG CHÍNH XÁC</h3>
-                <p>Calo & macro cá nhân hóa. Thực phẩm nên/tránh rõ ràng. Ví dụ 200g protein trong 2000 calo. Không diet cực đoan – bền vững lâu dài.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="400">
-                <h3>KẾT QUẢ THỰC TẾ</h3>
-                <p>Hàng ngàn người đã giảm 10-20kg mỡ, tăng cơ rõ rệt chỉ 90 ngày. Cơ thể mạnh mẽ, năng lượng bùng nổ.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="600">
-                <h3>HỖ TRỢ MẠNH MẼ</h3>
-                <p>Cộng đồng VIP, video hướng dẫn, bonus Noel (meal plan đặc biệt + template theo dõi).</p>
-            </div>
-        </div>
-    </section>
+<div class="hero-overlay" data-aos="zoom-in">
+<h1>WINDFIT</h1>
+<div class="slogan">KHỎE MẠNH HƠN</div>
+<div class="slogan">GIÀU CÓ HƠN</div>
+<div class="slogan">HẠNH PHÚC HƠN</div>
+<p class="tagline">90 ngày đủ để thay đổi cuộc đời – Tập luyện khoa học & dinh dưỡng chuẩn</p>
+<div class="countdown">NOEL SALE CÒN: <span id="timer">00:00:00</span></div>
+</div>
+</section>
 
-    <!-- Before & After -->
-    <section data-aos="fade-up">
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">BEFORE & AFTER – BIẾN ĐỔI THỰC TẾ</h2>
-        <div class="grid-container before-after">
-            <div class="ba-pair" data-aos="flip-left">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/before-after-transformation-lead.jpg" alt="Before - mỡ cao" loading="lazy">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/after-transformation-lead.jpg" alt="After - cơ bắp săn chắc" loading="lazy">
-            </div>
-            <div class="ba-pair" data-aos="flip-left" data-aos-delay="200">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/before-after-weight-loss-1200x630.jpg" alt="Before nữ" loading="lazy">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/after-weight-loss.jpg" alt="After nữ thon gọn" loading="lazy">
-            </div>
-            <div class="ba-pair" data-aos="flip-left" data-aos-delay="400">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/before-after-3-700xh.jpg" alt="Before nam" loading="lazy">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/after-3-700xh.jpg" alt="After nam nét cơ" loading="lazy">
-            </div>
-        </div>
-    </section>
+<section class="features">
+<h2 style="color:#ff1744;font-size:3em;margin-bottom:50px">TẠI SAO CHỌN WINDFIT?</h2>
+<div class="grid-container">
+<div class="card"><h3>KHOA HỌC</h3><p>Progressive overload – đốt mỡ, tăng cơ bền vững.</p></div>
+<div class="card"><h3>DINH DƯỠNG</h3><p>Cá nhân hóa calo & macro, dễ áp dụng.</p></div>
+<div class="card"><h3>KẾT QUẢ</h3><p>Giảm 10–20kg mỡ chỉ sau 90 ngày.</p></div>
+</div>
+</section>
 
-    <!-- Testimonials -->
-    <section class="testimonials" data-aos="fade-up">
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">KHÁCH HÀNG NÓI GÌ</h2>
-        <div class="grid-container">
-            <div class="card" data-aos="fade-up">
-                <p>"Giảm 18kg mỡ, bụng sáu múi rõ. Tập luyện mạnh mẽ, dinh dưỡng dễ theo. Best program ever!"</p>
-                <strong>- Việt, 29 tuổi</strong>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <p>"Từ gầy yếu thành mạnh mẽ. Năng lượng cả ngày, tự tin hơn hẳn. Cảm ơn WINDFIT!"</p>
-                <strong>- Hương, 26 tuổi</strong>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="400">
-                <p>"Kết quả vượt mong đợi. Tập khoa học, ăn ngon mà vẫn giảm mỡ tăng cơ. Recommend 100%!"</p>
-                <strong>- Long, 34 tuổi</strong>
-            </div>
-        </div>
-    </section>
+<section class="pricing">
+<h2 style="color:#ff1744;font-size:3em">NOEL SALE -50%</h2>
+<div class="grid-container">
+<div class="card price-card">
+<h3>BASIC</h3>
+<p class="old-price">$98</p>
+<p class="new-price">$49</p>
+<button>Mua Ngay</button>
+</div>
 
-    <!-- Pricing -->
-    <section class="pricing" data-aos="fade-up">
-        <h2 style="font-size:4.5em; color:#ff1744; margin-bottom:40px;">NOEL SALE - GIẢM 50% NGAY HÔM NAY!</h2>
-        <p style="font-size:2.5em; color:#00e676; margin-bottom:80px;">Giá gốc $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
-        <div class="grid-container">
-            <div class="card price-card">
-                <h3>BASIC</h3>
-                <p class="old-price">$98</p>
-                <p class="new-price">$49</p>
-                <ul>
-                    <li>PDF đầy đủ tập luyện & dinh dưỡng</li>
-                    <li>Checklist 90 ngày</li>
-                    <li>Hướng dẫn cơ bản</li>
-                    <li>Bonus Noel: Template theo dõi</li>
-                </ul>
-                <button onclick="window.open('https://buy.stripe.com/your_basic_link', '_blank')">Mua Ngay</button>
-            </div>
-            <div class="card price-card popular">
-                <h3>PREMIUM</h3>
-                <p class="old-price">$198</p>
-                <p class="new-price">$99</p>
-                <ul>
-                    <li>Tất cả Basic</li>
-                    <li>Video hướng dẫn từng bài tập</li>
-                    <li>Cộng đồng VIP hỗ trợ</li>
-                    <li>Bonus Noel: Meal Plan Cá Nhân + Audio Motivation</li>
-                    <li>Hoàn tiền 30 ngày</li>
-                </ul>
-                <button onclick="window.open('https://buy.stripe.com/your_premium_link', '_blank')">Mua Ngay (Hot)</button>
-            </div>
-            <div class="card price-card">
-                <h3>VIP</h3>
-                <p class="old-price">$398</p>
-                <p class="new-price">$199</p>
-                <ul>
-                    <li>Tất cả Premium</li>
-                    <li>Coaching 1:1 (2 buổi Zoom)</li>
-                    <li>Kế hoạch tập + ăn riêng</li>
-                    <li>Hỗ trợ ưu tiên lifetime</li>
-                </ul>
-                <button onclick="window.open('https://buy.stripe.com/your_vip_link', '_blank')">Mua Ngay</button>
-            </div>
-        </div>
-    </section>
+<div class="card price-card popular">
+<h3>PREMIUM</h3>
+<p class="old-price">$198</p>
+<p class="new-price">$99</p>
+<button>Mua Ngay</button>
+</div>
 
-    <footer>
-        <p>© 2025 WINDFIT | Thanh toán an toàn qua Stripe | Hoàn tiền 30 ngày không rủi ro</p>
-        <p>Liên hệ: support@windfit.com</p>
-    </footer>
+<div class="card price-card">
+<h3>VIP</h3>
+<p class="old-price">$398</p>
+<p class="new-price">$199</p>
+<button>Mua Ngay</button>
+</div>
+</div>
+</section>
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: false,
-            mirror: true
-        });
+<footer>
+<p>© 2025 WINDFIT – Thanh toán an toàn – Hoàn tiền 30 ngày</p>
+</footer>
 
-        // Countdown
-        const countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
-        const timerElement = document.getElementById("timer");
-        const x = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            if (distance < 0) {
-                clearInterval(x);
-                timerElement.innerHTML = "HẾT HẠN!";
-                return;
-            }
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            timerElement.innerHTML = `${days} ngày ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }, 1000);
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration:800,
+    once:true,
+    disable:'mobile'
+});
 
-        // Particle.js Config - Mạnh mẽ, năng lượng đỏ-xanh neon
-        particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#ff1744", "#00e676"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.8, "random": true },
-                "size": { "value": 4, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ff1744", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "repulse" }, "resize": true },
-                "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
-            },
-            "retina_detect": true
-        });
-    </script>
+// Countdown Noel 25/12
+const endDate = new Date("Dec 25, 2025 23:59:59").getTime();
+const timer = document.getElementById("timer");
+
+setInterval(()=>{
+    const now = new Date().getTime();
+    const d = endDate - now;
+    if(d <= 0){ timer.innerHTML="HẾT HẠN"; return; }
+    const h = Math.floor(d/1000/60/60);
+    const m = Math.floor(d/1000/60)%60;
+    const s = Math.floor(d/1000)%60;
+    timer.innerHTML = `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+},1000);
+
+// Particles
+particlesJS("particles-js",{
+particles:{
+number:{value:70},
+color:{value:["#ff1744","#00e676"]},
+size:{value:4,random:true},
+move:{speed:4},
+line_linked:{enable:true,color:"#ff1744"}
+}
+});
+</script>
+
 </body>
 </html>
