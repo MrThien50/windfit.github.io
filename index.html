@@ -7,6 +7,8 @@
     <title>WINDFIT - 90 Ngày Thay Đổi Cuộc Đời</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <!-- Particle.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -16,7 +18,15 @@
             line-height: 1.6; 
             overflow-x: hidden;
         }
-        /* Hero Video Background - Mạnh mẽ & Hiện đại */
+        /* Particles Container - Overlay toàn trang */
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* Hero Video Background */
         .hero-video {
             position: relative;
             min-height: 100vh;
@@ -35,7 +45,7 @@
         }
         .hero-overlay {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             padding: 40px 20px;
             background: rgba(0,0,0,0.5);
             border-radius: 20px;
@@ -69,7 +79,7 @@
         }
         .countdown span { color: #00e676; font-weight: bold; }
         .price-text { font-size: clamp(1.8em, 4vw, 2.5em); color: #00e676; margin: 20px 0; }
-        section { padding: 120px 20px; text-align: center; }
+        section { padding: 120px 20px; text-align: center; position: relative; z-index: 2; }
         .features, .testimonials { background: #111; }
         .grid-container {
             display: grid; 
@@ -77,13 +87,16 @@
             gap: 50px; 
             max-width: 1400px; 
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         .card {
-            background: #1f1f1f; 
+            background: rgba(31,31,31,0.9); 
             padding: 50px; 
             border-radius: 25px; 
             box-shadow: 0 0 40px rgba(255,23,68,0.5); 
             transition: all 0.5s ease;
+            backdrop-filter: blur(5px);
         }
         .card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 0 60px rgba(255,23,68,0.9); }
         .card h3 { color: #ff1744; font-size: 2.8em; margin-bottom: 20px; }
@@ -109,7 +122,7 @@
             box-shadow: 0 0 30px rgba(255,23,68,0.9);
         }
         .price-card button:hover { transform: scale(1.15); box-shadow: 0 0 50px #ff1744; }
-        footer { background: #000; padding: 80px 20px; font-size: 1.3em; text-align: center; }
+        footer { background: #000; padding: 80px 20px; font-size: 1.3em; text-align: center; position: relative; z-index: 2; }
         /* Responsive */
         @media (max-width: 768px) {
             .hero-video { min-height: 80vh; }
@@ -123,7 +136,10 @@
 </head>
 <body>
 
-    <!-- Video Hero Background Mạnh Mẽ (Gym Motivation Epic - Chạy mượt trên mobile) -->
+    <!-- Particles.js Canvas Overlay -->
+    <div id="particles-js"></div>
+
+    <!-- Video Hero Background -->
     <section class="hero-video">
         <video autoplay muted loop playsinline preload="auto">
             <source src="https://player.vimeo.com/external/514748870.hd.mp4?s=5f0b7e3d3f9d3e3b9e3e3f9d3e3b9e3e&profile_id=175" type="video/mp4">
@@ -169,21 +185,21 @@
         <div class="grid-container before-after">
             <div class="ba-pair" data-aos="flip-left">
                 <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/before-after-transformation-lead.jpg" alt="Before - mỡ cao">
+                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/before-after-transformation-lead.jpg" alt="Before - mỡ cao" loading="lazy">
                 <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/after-transformation-lead.jpg" alt="After - cơ bắp săn chắc">
+                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/after-transformation-lead.jpg" alt="After - cơ bắp săn chắc" loading="lazy">
             </div>
             <div class="ba-pair" data-aos="flip-left" data-aos-delay="200">
                 <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/before-after-weight-loss-1200x630.jpg" alt="Before nữ">
+                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/before-after-weight-loss-1200x630.jpg" alt="Before nữ" loading="lazy">
                 <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/after-weight-loss.jpg" alt="After nữ thon gọn">
+                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/after-weight-loss.jpg" alt="After nữ thon gọn" loading="lazy">
             </div>
             <div class="ba-pair" data-aos="flip-left" data-aos-delay="400">
                 <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/before-after-3-700xh.jpg" alt="Before nam">
+                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/before-after-3-700xh.jpg" alt="Before nam" loading="lazy">
                 <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/after-3-700xh.jpg" alt="After nam nét cơ">
+                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/after-3-700xh.jpg" alt="After nam nét cơ" loading="lazy">
             </div>
         </div>
     </section>
@@ -191,16 +207,16 @@
     <!-- Testimonials -->
     <section class="testimonials" data-aos="fade-up">
         <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">KHÁCH HÀNG NÓI GÌ</h2>
-        <div class="grid-container testimonial-grid">
-            <div class="card testimonial-card" data-aos="fade-up">
+        <div class="grid-container">
+            <div class="card" data-aos="fade-up">
                 <p>"Giảm 18kg mỡ, bụng sáu múi rõ. Tập luyện mạnh mẽ, dinh dưỡng dễ theo. Best program ever!"</p>
                 <strong>- Việt, 29 tuổi</strong>
             </div>
-            <div class="card testimonial-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <p>"Từ gầy yếu thành mạnh mẽ. Năng lượng cả ngày, tự tin hơn hẳn. Cảm ơn WINDFIT!"</p>
                 <strong>- Hương, 26 tuổi</strong>
             </div>
-            <div class="card testimonial-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
                 <p>"Kết quả vượt mong đợi. Tập khoa học, ăn ngon mà vẫn giảm mỡ tăng cơ. Recommend 100%!"</p>
                 <strong>- Long, 34 tuổi</strong>
             </div>
@@ -211,7 +227,7 @@
     <section class="pricing" data-aos="fade-up">
         <h2 style="font-size:4.5em; color:#ff1744; margin-bottom:40px;">NOEL SALE - GIẢM 50% NGAY HÔM NAY!</h2>
         <p style="font-size:2.5em; color:#00e676; margin-bottom:80px;">Giá gốc $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
-        <div class="grid-container pricing-grid">
+        <div class="grid-container">
             <div class="card price-card">
                 <h3>BASIC</h3>
                 <p class="old-price">$98</p>
@@ -266,7 +282,7 @@
             mirror: true
         });
 
-        // Countdown chính xác đến 31/12/2025
+        // Countdown
         const countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
         const timerElement = document.getElementById("timer");
         const x = setInterval(() => {
@@ -283,6 +299,25 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             timerElement.innerHTML = `${days} ngày ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }, 1000);
+
+        // Particle.js Config - Mạnh mẽ, năng lượng đỏ-xanh neon
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#ff1744", "#00e676"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.8, "random": true },
+                "size": { "value": 4, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ff1744", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "resize": true },
+                "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+            },
+            "retina_detect": true
+        });
     </script>
 </body>
 </html>
