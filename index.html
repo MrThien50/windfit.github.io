@@ -3,159 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Intentionally Fitness - 90 Ngày Tập Luyện & Dinh Dưỡng</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>WINDFIT - 90 Ngày Tập Luyện & Dinh Dưỡng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Roboto', sans-serif; 
-            background: #0f0f0f; 
+            background: #0a0a0a; 
             color: #e0e0e0; 
             line-height: 1.6; 
             overflow-x: hidden;
         }
-        /* Hiệu ứng Noel: Snow falling */
-        .snowflake { position: fixed; top: -10%; color: white; font-size: 1.5em; pointer-events: none; animation: fall linear forwards; z-index: 1000; }
-        @keyframes fall { to { transform: translateY(100vh); } }
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover; 
-            padding: 150px 20px 100px; 
-            text-align: center; 
+        /* Hiệu ứng Noel: Snow falling mạnh mẽ */
+        .snowflake { 
+            position: fixed; 
+            top: -10%; 
+            color: white; 
+            font-size: 1.8em; 
+            pointer-events: none; 
+            animation: fall linear forwards; 
+            z-index: 999; 
         }
-        header h1 { font-family: 'Oswald', sans-serif; font-size: 5em; color: #ff0000; text-shadow: 0 0 10px #fff; margin-bottom: 20px; }
-        header p { font-size: 1.8em; max-width: 900px; margin: 0 auto 40px; }
-        .video-hook { max-width: 900px; margin: 40px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 0 30px rgba(255,0,0,0.6); }
-        .countdown { font-size: 2em; color: #ff0000; margin: 40px 0; text-shadow: 0 0 10px #fff; }
-        .countdown span { font-weight: bold; color: #00ff00; }
-        section { padding: 80px 20px; text-align: center; }
-        .features { background: #1a1a1a; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .feature-card { background: #000; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(255,0,0,0.3); }
-        .feature-card h3 { color: #ff0000; font-size: 1.8em; margin-bottom: 20px; }
-        .before-after { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px,1fr)); gap: 30px; max-width: 1200px; margin: 60px auto; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover; 
+            padding: 180px 20px 120px; 
+            text-align: center; 
+            position: relative;
+        }
+        header h1 { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 6em; 
+            color: #ff1744; 
+            text-shadow: 0 0 20px #fff, 0 0 40px #ff1744; 
+            margin-bottom: 20px; 
+            letter-spacing: 5px;
+        }
+        header .slogan { 
+            font-size: 2.5em; 
+            color: #00e676; 
+            margin: 20px 0; 
+            text-shadow: 0 0 15px #000; 
+        }
+        header .tagline { 
+            font-size: 2em; 
+            color: white; 
+            max-width: 900px; 
+            margin: 40px auto; 
+        }
+        .video-hook { 
+            max-width: 900px; 
+            margin: 50px auto; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 0 40px rgba(255,23,68,0.8); 
+        }
+        .countdown { 
+            font-size: 2.5em; 
+            color: #ff1744; 
+            margin: 50px 0; 
+            text-shadow: 0 0 15px #fff; 
+        }
+        .countdown span { font-weight: bold; color: #00e676; font-size: 1.2em; }
+        section { padding: 100px 20px; text-align: center; }
+        .features { background: #111; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
+        .feature-card { background: #1f1f1f; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,23,68,0.4); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-15px); }
+        .feature-card h3 { color: #ff1744; font-size: 2.2em; margin-bottom: 20px; }
+        .before-after { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px,1fr)); gap: 40px; max-width: 1300px; margin: 80px auto; }
         .ba-pair { text-align: center; }
-        .ba-pair img { width: 100%; border-radius: 15px; box-shadow: 0 0 20px rgba(255,255,255,0.2); margin: 10px 0; }
-        .testimonials { background: #111; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .testimonial-card { background: #222; padding: 30px; border-radius: 15px; font-style: italic; }
-        .testimonial-card p { margin-bottom: 20px; }
-        .testimonial-card strong { color: #ff0000; }
-        .pricing { background: linear-gradient(#000, #1a0000); padding: 100px 20px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .price-card { background: #222; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,0,0,0.5); transition: transform 0.3s; position: relative; overflow: hidden; }
-        .price-card:hover { transform: scale(1.05); }
-        .price-card.popular { border: 5px solid #ff0000; }
-        .price-card.popular::before { content: 'NOEL DISCOUNT -50%'; position: absolute; top: 20px; right: -50px; background: #ff0000; color: white; padding: 10px 60px; transform: rotate(45deg); font-weight: bold; }
-        .price-card h3 { font-size: 2.5em; color: #ff0000; }
-        .old-price { text-decoration: line-through; color: #666; font-size: 1.5em; }
-        .new-price { font-size: 3.5em; color: #00ff00; margin: 20px 0; }
-        .price-card ul { list-style: none; margin: 30px 0; text-align: left; }
-        .price-card li { margin: 15px 0; font-size: 1.2em; }
-        .price-card li::before { content: '✦'; color: #ff0000; margin-right: 10px; }
-        .price-card button { background: #ff0000; color: white; border: none; padding: 20px 50px; font-size: 1.5em; border-radius: 50px; cursor: pointer; transition: 0.3s; }
-        .price-card button:hover { background: #cc0000; }
-        footer { background: #000; color: #666; text-align: center; padding: 40px; font-size: 1.1em; }
-        @media (max-width: 768px) { header h1 { font-size: 3em; } .pricing-grid, .features-grid, .testimonial-grid, .before-after { grid-template-columns: 1fr; } }
+        .ba-pair img { width: 100%; border-radius: 20px; box-shadow: 0 0 30px rgba(255,255,255,0.3); margin: 15px 0; }
+        .testimonials { background: #0a0a0a; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
+        .testimonial-card { background: #1f1f1f; padding: 40px; border-radius: 20px; font-style: italic; box-shadow: 0 0 20px rgba(255,23,68,0.3); }
+        .testimonial-card p { margin-bottom: 25px; font-size: 1.2em; }
+        .testimonial-card strong { color: #ff1744; font-size: 1.3em; }
+        .pricing { background: linear-gradient(#0a0a0a, #1a0000); padding: 120px 20px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
+        .price-card { background: #1f1f1f; padding: 50px; border-radius: 25px; box-shadow: 0 0 40px rgba(255,23,68,0.6); transition: transform 0.3s; position: relative; overflow: hidden; border: 3px solid transparent; }
+        .price-card:hover { transform: scale(1.08); border-color: #ff1744; }
+        .price-card.popular { border: 5px solid #ff1744; }
+        .price-card.popular::before { content: 'NOEL SALE -50%'; position: absolute; top: 25px; right: -60px; background: #ff1744; color: white; padding: 15px 80px; transform: rotate(45deg); font-weight: bold; font-size: 1.2em; box-shadow: 0 0 20px #fff; }
+        .price-card h3 { font-size: 3em; color: #ff1744; }
+        .old-price { text-decoration: line-through; color: #666; font-size: 2em; }
+        .new-price { font-size: 4.5em; color: #00e676; margin: 25px 0; font-weight: bold; }
+        .price-card ul { list-style: none; margin: 40px 0; text-align: left; font-size: 1.3em; }
+        .price-card li { margin: 20px 0; }
+        .price-card li::before { content: '✦'; color: #ff1744; font-weight: bold; margin-right: 15px; font-size: 1.5em; }
+        .price-card button { background: #ff1744; color: white; border: none; padding: 20px 60px; font-size: 1.8em; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 20px rgba(255,23,68,0.8); }
+        .price-card button:hover { background: #d50000; transform: scale(1.1); }
+        footer { background: #000; color: #666; text-align: center; padding: 60px; font-size: 1.2em; }
+        @media (max-width: 768px) { header h1 { font-size: 3.5em; } .pricing-grid, .features-grid, .testimonial-grid, .before-after { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- Snow Falling Effect Noel -->
+    <!-- Snow Falling Effect Noel (mạnh mẽ hơn) -->
     <script>
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
-            snowflake.innerText = '❄';
+            snowflake.innerText = Math.random() > 0.5 ? '❄' : '★';
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 4 + 's';
+            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+            snowflake.style.fontSize = Math.random() * 20 + 15 + 'px';
             document.body.appendChild(snowflake);
             setTimeout(() => snowflake.remove(), 10000);
         }
-        setInterval(createSnowflake, 200);
+        setInterval(createSnowflake, 150);
     </script>
 
     <header>
-        <h1>LIVE INTENTIONALLY FITNESS</h1>
-        <p>90 Ngày Tập Luyện & Dinh Dưỡng – Biến Đổi Cơ Thể, Sức Mạnh Nội Tại</p>
-        <p style="font-size:2em; color:#ff0000;">NOEL DISCOUNT -50% – Chỉ Còn Ít Giờ!</p>
-        <div class="countdown" id="countdown">Còn: <span id="timer">00:00:00</span></div>
+        <h1>WINDFIT</h1>
+        <div class="slogan">KHỎE MẠNH HƠN</div>
+        <div class="slogan">GIÀU CÓ HƠN</div>
+        <div class="slogan">HẠNH PHÚC HƠN</div>
+        <p class="tagline">90 ngày đủ để thay đổi 1 đời người: Tập luyện khoa học – Dinh dưỡng chính xác – Kết quả thực tế</p>
 
-        <!-- Video Hook 1 Phút (Thật - Christmas Gym Motivation Strong) -->
+        <!-- Video Hook Thật (1 Phút - Strong Christmas Gym Motivation) -->
         <div class="video-hook">
-            <iframe width="100%" height="500" src="https://www.youtube.com/embed/wNCVBWbOtGk" title="Christmas Gym Motivation 1 Minute - Strong Fitness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="520" src="https://www.youtube.com/embed/wNCVBWbOtGk" title="Christmas Gym Motivation - Strong & Powerful 1 Minute" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p style="font-size:1.8em; margin-top:40px; color:#00ff00;">"Mùa Noel này, tặng bản thân món quà mạnh mẽ nhất: Cơ thể mơ ước."</p>
+
+        <div class="countdown" id="countdown">NOEL SALE -50% CÒN: <span id="timer">00:00:00</span></div>
+        <p style="font-size:2em; color:#00e676;">Giá gốc từ $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
     </header>
 
     <section class="features">
-        <h2 style="font-size:3em; color:#ff0000;">TẠI SAO CHỌN LIVE INTENTIONALLY FITNESS?</h2>
+        <h2 style="font-size:4em; color:#ff1744; margin-bottom:60px;">TẠI SAO WINDFIT LÀ LỰA CHỌN SỐ 1?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3>Tập Luyện Tối Ưu</h3>
-                <p>Chương trình sức mạnh 3-4 ngày/tuần, progressive overload, cardio, chạy nước rút, thể thao. Xây cơ, giảm mỡ hiệu quả.</p>
+                <h3>TẬP LUYỆN KHOA HỌC</h3>
+                <p>Chương trình sức mạnh 3-4 ngày/tuần với progressive overload. Cardio, chạy nước rút, thể thao. Xây cơ săn chắc, đốt mỡ tối ưu.</p>
             </div>
             <div class="feature-card">
-                <h3>Dinh Dưỡng Chính Xác</h3>
-                <p>Calo, macro cá nhân hóa, thực phẩm nên/tránh, ví dụ 200g protein. Không diet cực đoan – bền vững lâu dài.</p>
+                <h3>DINH DƯỠNG CHÍNH XÁC</h3>
+                <p>Calo & macro cá nhân hóa. Thực phẩm nên/tránh rõ ràng. Ví dụ 200g protein trong 2000 calo. Không diet cực đoan – bền vững lâu dài.</p>
             </div>
             <div class="feature-card">
-                <h3>Kết Quả Thực Tế</h3>
-                <p>Hàng ngàn người đã giảm mỡ, tăng cơ, năng lượng cao. 90 ngày thay đổi cuộc đời.</p>
+                <h3>KẾT QUẢ THỰC TẾ</h3>
+                <p>Hàng ngàn người đã giảm 10-20kg mỡ, tăng cơ rõ rệt chỉ 90 ngày. Cơ thể mạnh mẽ, năng lượng bùng nổ.</p>
             </div>
             <div class="feature-card">
-                <h3>Hỗ Trợ Cộng Đồng</h3>
-                <p>Group chat riêng, Q&A, bonus Noel (meal plan đặc biệt).</p>
+                <h3>HỖ TRỢ MẠNH MẼ</h3>
+                <p>Cộng đồng VIP, video hướng dẫn, bonus Noel (meal plan đặc biệt + template theo dõi).</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2 style="font-size:3em; color:#ff0000;">BEFORE & AFTER – KẾT QUẢ THỰC TẾ</h2>
+        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">BEFORE & AFTER – BIẾN ĐỔI THỰC TẾ</h2>
         <div class="before-after">
             <div class="ba-pair">
-                <p>Before</p>
-                <img src="https://www.shutterstock.com/image-photo/awesome-before-after-weight-loss-600nw-2083553125.jpg" alt="Before transformation">
-                <p>After</p>
-                <img src="https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2019/01/new-transformation-lead.jpg" alt="After transformation strong">
+                <p style="font-size:1.8em; color:#ff1744;">Before</p>
+                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/before-after-transformation-lead.jpg" alt="Before - mỡ cao">
+                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
+                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/after-transformation-lead.jpg" alt="After - cơ bắp săn chắc">
             </div>
             <div class="ba-pair">
-                <p>Before</p>
-                <img src="https://media.istockphoto.com/id/619250036/photo/before-and-after.jpg?s=612x612" alt="Before">
-                <p>After</p>
-                <img src="https://www.shutterstock.com/image-photo/portrait-mature-man-before-after-600nw-1303099510.jpg" alt="After mature strong">
+                <p style="font-size:1.8em; color:#ff1744;">Before</p>
+                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/before-after-weight-loss-1200x630.jpg" alt="Before female">
+                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
+                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/after-weight-loss.jpg" alt="After toned female">
             </div>
             <div class="ba-pair">
-                <p>Before</p>
-                <img src="https://miro.medium.com/1*FKj01eqx3YwnHYU5HKMZqQ.jpeg" alt="Before dream physique">
-                <p>After</p>
-                <img src="https://i.guim.co.uk/img/media/32afe8b07cfba6492c8b889412e410780ca21fec/0_0_8386_6925/master/8386.jpg" alt="After rad bod">
+                <p style="font-size:1.8em; color:#ff1744;">Before</p>
+                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/before-after-3-700xh.jpg" alt="Before male">
+                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
+                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/after-3-700xh.jpg" alt="After shredded male">
             </div>
         </div>
     </section>
 
     <section class="testimonials">
-        <h2 style="font-size:3em; color:#ff0000;">KHÁCH HÀNG NÓI GÌ</h2>
+        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">KHÁCH HÀNG NÓI GÌ</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card">
-                <p>"Giảm 15kg mỡ, tăng cơ rõ rệt chỉ 90 ngày. Dinh dưỡng dễ theo, tập luyện mạnh mẽ!"</p>
-                <strong>- Minh, 32 tuổi</strong>
+                <p>"Giảm 18kg mỡ, bụng sáu múi rõ. Tập luyện mạnh mẽ, dinh dưỡng dễ theo. Best program ever!"</p>
+                <strong>- Việt, 29 tuổi</strong>
             </div>
             <div class="testimonial-card">
-                <p>"Từ skinny fat thành mạnh mẽ. Chương trình thay đổi hoàn toàn cơ thể và năng lượng."</p>
-                <strong>- Lan, 28 tuổi</strong>
+                <p>"Từ gầy yếu thành mạnh mẽ. Năng lượng cả ngày, tự tin hơn hẳn. Cảm ơn WINDFIT!"</p>
+                <strong>- Hương, 26 tuổi</strong>
             </div>
             <div class="testimonial-card">
-                <p>"Best investment! Tập luyện + ăn uống khoa học, kết quả vượt mong đợi."</p>
-                <strong>- Huy, 35 tuổi</strong>
+                <p>"Kết quả vượt mong đợi. Tập khoa học, ăn ngon mà vẫn giảm mỡ tăng cơ. Recommend 100%!"</p>
+                <strong>- Long, 34 tuổi</strong>
             </div>
         </div>
     </section>
 
     <section class="pricing">
-        <h2 style="font-size:3.5em; color:#ff0000;">NOEL SALE - GIẢM 50% CHỈ TRONG MÙA LỄ!</h2>
-        <p style="font-size:2em; color:#00ff00; margin-bottom:60px;">Giá gốc $198 → Chỉ còn từ $49!</p>
+        <h2 style="font-size:4.5em; color:#ff1744; margin-bottom:40px;">NOEL SALE - GIẢM 50% NGAY HÔM NAY!</h2>
+        <p style="font-size:2.5em; color:#00e676; margin-bottom:80px;">Giá gốc $198 → Chỉ còn từ $49 – Hạn cuối 31/12/2025!</p>
         <div class="pricing-grid">
             <div class="price-card">
                 <h3>BASIC</h3>
@@ -165,8 +207,9 @@
                     <li>PDF đầy đủ tập luyện & dinh dưỡng</li>
                     <li>Checklist 90 ngày</li>
                     <li>Hướng dẫn cơ bản</li>
+                    <li>Bonus Noel: Template theo dõi</li>
                 </ul>
-                <a href="https://buy.stripe.com/test_basic" target="_blank"><button>Mua Ngay</button></a>
+                <a href="https://buy.stripe.com/your_basic_link" target="_blank"><button>Mua Ngay</button></a>
             </div>
             <div class="price-card popular">
                 <h3>PREMIUM</h3>
@@ -175,11 +218,11 @@
                 <ul>
                     <li>Tất cả Basic</li>
                     <li>Video hướng dẫn từng bài tập</li>
-                    <li>Cộng đồng Telegram hỗ trợ</li>
-                    <li>Bonus Noel: Meal Plan Cá Nhân Hóa</li>
+                    <li>Cộng đồng VIP hỗ trợ</li>
+                    <li>Bonus Noel: Meal Plan Cá Nhân + Audio Motivation</li>
                     <li>Hoàn tiền 30 ngày</li>
                 </ul>
-                <a href="https://buy.stripe.com/test_premium" target="_blank"><button>Mua Ngay (Hot)</button></a>
+                <a href="https://buy.stripe.com/your_premium_link" target="_blank"><button>Mua Ngay (Hot)</button></a>
             </div>
             <div class="price-card">
                 <h3>VIP</h3>
@@ -191,27 +234,31 @@
                     <li>Kế hoạch tập + ăn riêng</li>
                     <li>Hỗ trợ ưu tiên lifetime</li>
                 </ul>
-                <a href="https://buy.stripe.com/test_vip" target="_blank"><button>Mua Ngay</button></a>
+                <a href="https://buy.stripe.com/your_vip_link" target="_blank"><button>Mua Ngay</button></a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 Live Intentionally Fitness | Thanh toán an toàn qua Stripe | Hoàn tiền 30 ngày</p>
-        <p>Liên hệ: support@liveintentionally.fit</p>
+        <p>© 2025 WINDFIT | Thanh toán an toàn qua Stripe | Hoàn tiền 30 ngày không rủi ro</p>
+        <p>Liên hệ: support@windfit.com</p>
     </footer>
 
     <script>
-        // Countdown Noel (giả lập hết trong 24h)
-        let countdownDate = new Date().getTime() + 24*60*60*1000;
+        // Countdown Noel (hạn 31/12/2025)
+        let countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
         let x = setInterval(function() {
             let now = new Date().getTime();
             let distance = countdownDate - now;
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
             let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-            if (distance < 0) clearInterval(x);
+            document.getElementById("timer").innerHTML = days + " ngày " + hours + "h " + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "HẾT HẠN!";
+            }
         }, 1000);
     </script>
 </body>
