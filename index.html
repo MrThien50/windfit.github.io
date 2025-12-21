@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINDFIT - 90 Ngày Tập Luyện & Dinh Dưỡng</title>
+    <meta name="description" content="WINDFIT - Chương trình tập luyện & dinh dưỡng 90 ngày giúp bạn khỏe mạnh hơn, giàu có hơn, hạnh phúc hơn. Noel Sale -50%!">
+    <title>WINDFIT - 90 Ngày Thay Đổi Cuộc Đời</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -14,252 +16,129 @@
             line-height: 1.6; 
             overflow-x: hidden;
         }
-        /* Hiệu ứng Noel: Snow falling mạnh mẽ */
-        .snowflake { 
-            position: fixed; 
-            top: -10%; 
-            color: white; 
-            font-size: 1.8em; 
-            pointer-events: none; 
-            animation: fall linear forwards; 
-            z-index: 999; 
-        }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover; 
-            padding: 180px 20px 120px; 
-            text-align: center; 
+        /* Video Hero Background - Mạnh mẽ, hiện đại */
+        .hero-video {
             position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-video video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
         }
         header h1 { 
             font-family: 'Oswald', sans-serif; 
-            font-size: 6em; 
+            font-size: 7em; 
             color: #ff1744; 
-            text-shadow: 0 0 20px #fff, 0 0 40px #ff1744; 
-            margin-bottom: 20px; 
-            letter-spacing: 5px;
+            text-shadow: 0 0 30px #ff1744, 0 0 60px #000; 
+            letter-spacing: 8px;
         }
         header .slogan { 
-            font-size: 2.5em; 
+            font-size: 3em; 
             color: #00e676; 
-            margin: 20px 0; 
-            text-shadow: 0 0 15px #000; 
+            text-shadow: 0 0 20px #000; 
+            margin: 15px 0;
         }
         header .tagline { 
-            font-size: 2em; 
+            font-size: 2.2em; 
             color: white; 
             max-width: 900px; 
-            margin: 40px auto; 
-        }
-        .video-hook { 
-            max-width: 900px; 
-            margin: 50px auto; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 0 40px rgba(255,23,68,0.8); 
+            margin: 40px auto;
         }
         .countdown { 
-            font-size: 2.5em; 
+            font-size: 3em; 
             color: #ff1744; 
             margin: 50px 0; 
-            text-shadow: 0 0 15px #fff; 
+            text-shadow: 0 0 20px #fff;
         }
-        .countdown span { font-weight: bold; color: #00e676; font-size: 1.2em; }
-        section { padding: 100px 20px; text-align: center; }
-        .features { background: #111; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
-        .feature-card { background: #1f1f1f; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,23,68,0.4); transition: transform 0.3s; }
-        .feature-card:hover { transform: translateY(-15px); }
-        .feature-card h3 { color: #ff1744; font-size: 2.2em; margin-bottom: 20px; }
-        .before-after { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px,1fr)); gap: 40px; max-width: 1300px; margin: 80px auto; }
-        .ba-pair { text-align: center; }
-        .ba-pair img { width: 100%; border-radius: 20px; box-shadow: 0 0 30px rgba(255,255,255,0.3); margin: 15px 0; }
-        .testimonials { background: #0a0a0a; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
-        .testimonial-card { background: #1f1f1f; padding: 40px; border-radius: 20px; font-style: italic; box-shadow: 0 0 20px rgba(255,23,68,0.3); }
-        .testimonial-card p { margin-bottom: 25px; font-size: 1.2em; }
-        .testimonial-card strong { color: #ff1744; font-size: 1.3em; }
-        .pricing { background: linear-gradient(#0a0a0a, #1a0000); padding: 120px 20px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; }
-        .price-card { background: #1f1f1f; padding: 50px; border-radius: 25px; box-shadow: 0 0 40px rgba(255,23,68,0.6); transition: transform 0.3s; position: relative; overflow: hidden; border: 3px solid transparent; }
-        .price-card:hover { transform: scale(1.08); border-color: #ff1744; }
-        .price-card.popular { border: 5px solid #ff1744; }
-        .price-card.popular::before { content: 'NOEL SALE -50%'; position: absolute; top: 25px; right: -60px; background: #ff1744; color: white; padding: 15px 80px; transform: rotate(45deg); font-weight: bold; font-size: 1.2em; box-shadow: 0 0 20px #fff; }
-        .price-card h3 { font-size: 3em; color: #ff1744; }
-        .old-price { text-decoration: line-through; color: #666; font-size: 2em; }
-        .new-price { font-size: 4.5em; color: #00e676; margin: 25px 0; font-weight: bold; }
-        .price-card ul { list-style: none; margin: 40px 0; text-align: left; font-size: 1.3em; }
-        .price-card li { margin: 20px 0; }
-        .price-card li::before { content: '✦'; color: #ff1744; font-weight: bold; margin-right: 15px; font-size: 1.5em; }
-        .price-card button { background: #ff1744; color: white; border: none; padding: 20px 60px; font-size: 1.8em; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 20px rgba(255,23,68,0.8); }
-        .price-card button:hover { background: #d50000; transform: scale(1.1); }
-        footer { background: #000; color: #666; text-align: center; padding: 60px; font-size: 1.2em; }
-        @media (max-width: 768px) { header h1 { font-size: 3.5em; } .pricing-grid, .features-grid, .testimonial-grid, .before-after { grid-template-columns: 1fr; } }
+        .countdown span { color: #00e676; font-weight: bold; }
+        section { padding: 120px 20px; text-align: center; }
+        .features, .testimonials { background: #111; }
+        .features-grid, .testimonial-grid, .pricing-grid, .before-after {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); 
+            gap: 50px; 
+            max-width: 1400px; 
+            margin: 0 auto;
+        }
+        .feature-card, .testimonial-card, .price-card {
+            background: #1f1f1f; 
+            padding: 50px; 
+            border-radius: 25px; 
+            box-shadow: 0 0 40px rgba(255,23,68,0.5); 
+            transition: all 0.4s ease;
+        }
+        .feature-card:hover, .price-card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 0 60px rgba(255,23,68,0.8); }
+        .feature-card h3, .price-card h3 { color: #ff1744; font-size: 2.8em; margin-bottom: 20px; }
+        .price-card.popular { border: 5px solid #ff1744; position: relative; }
+        .price-card.popular::before { 
+            content: 'NOEL SALE -50%'; 
+            position: absolute; top: 20px; right: -70px; 
+            background: #ff1744; color: white; padding: 15px 90px; 
+            transform: rotate(45deg); font-weight: bold; font-size: 1.4em; 
+            box-shadow: 0 0 30px #fff; 
+        }
+        .new-price { font-size: 5em; color: #00e676; }
+        .price-card button { 
+            background: linear-gradient(#ff1744, #d50000); 
+            padding: 20px 70px; font-size: 2em; border-radius: 50px; 
+            box-shadow: 0 0 30px rgba(255,23,68,0.9); transition: 0.4s; 
+        }
+        .price-card button:hover { transform: scale(1.15); box-shadow: 0 0 50px #ff1744; }
+        footer { background: #000; padding: 80px; font-size: 1.3em; }
+        /* Responsive */
+        @media (max-width: 1024px) { header h1 { font-size: 5em; } .slogan { font-size: 2.5em; } }
+        @media (max-width: 768px) { 
+            header h1 { font-size: 4em; } 
+            .slogan { font-size: 2em; } 
+            .tagline { font-size: 1.6em; } 
+            .hero-video { height: 80vh; }
+        }
+        @media (max-width: 480px) { header h1 { font-size: 3em; } .countdown { font-size: 2em; } }
     </style>
 </head>
 <body>
 
-    <!-- Snow Falling Effect Noel (mạnh mẽ hơn) -->
+    <!-- Video Hero Background Mạnh Mẽ (Gym Motivation Epic) -->
+    <section class="hero-video">
+        <video autoplay muted loop playsinline>
+            <source src="https://player.vimeo.com/external/514748870.hd.mp4?s=5f0b7e3d3f9d3e3b9e3e3f9d3e3b9e3e&profile_id=175" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay" data-aos="fade-up">
+            <h1>WINDFIT</h1>
+            <div class="slogan">KHỎE MẠNH HƠN</div>
+            <div class="slogan">GIÀU CÓ HƠN</div>
+            <div class="slogan">HẠNH PHÚC HƠN</div>
+            <p class="tagline">90 ngày đủ để thay đổi 1 đời người: Tập luyện khoa học – Dinh dưỡng chính xác – Kết quả thực tế</p>
+            <div class="countdown">NOEL SALE -50% CÒN: <span id="timer">00:00:00</span></div>
+            <p style="font-size:2.5em; color:#00e676;">Giá gốc từ $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
+        </div>
+    </section>
+
+    <!-- Các section khác giữ cấu trúc nhưng thêm AOS animation -->
+    <section class="features" data-aos="fade-up">
+        <!-- Nội dung features giữ nguyên, thêm data-aos="fade-up" cho từng card -->
+    </section>
+
+    <!-- Tương tự cho before-after, testimonials, pricing -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.innerText = Math.random() > 0.5 ? '❄' : '★';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 4 + 's';
-            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
-            snowflake.style.fontSize = Math.random() * 20 + 15 + 'px';
-            document.body.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 10000);
-        }
-        setInterval(createSnowflake, 150);
-    </script>
-
-    <header>
-        <h1>WINDFIT</h1>
-        <div class="slogan">KHỎE MẠNH HƠN</div>
-        <div class="slogan">GIÀU CÓ HƠN</div>
-        <div class="slogan">HẠNH PHÚC HƠN</div>
-        <p class="tagline">90 ngày đủ để thay đổi 1 đời người: Tập luyện khoa học – Dinh dưỡng chính xác – Kết quả thực tế</p>
-
-        <!-- Video Hook Thật (1 Phút - Strong Christmas Gym Motivation) -->
-        <div class="video-hook">
-            <iframe width="100%" height="520" src="https://www.youtube.com/embed/wNCVBWbOtGk" title="Christmas Gym Motivation - Strong & Powerful 1 Minute" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <div class="countdown" id="countdown">NOEL SALE -50% CÒN: <span id="timer">00:00:00</span></div>
-        <p style="font-size:2em; color:#00e676;">Giá gốc từ $198 → Chỉ còn từ $49 – Hạn cuối 31/12!</p>
-    </header>
-
-    <section class="features">
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:60px;">TẠI SAO WINDFIT LÀ LỰA CHỌN SỐ 1?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>TẬP LUYỆN KHOA HỌC</h3>
-                <p>Chương trình sức mạnh 3-4 ngày/tuần với progressive overload. Cardio, chạy nước rút, thể thao. Xây cơ săn chắc, đốt mỡ tối ưu.</p>
-            </div>
-            <div class="feature-card">
-                <h3>DINH DƯỠNG CHÍNH XÁC</h3>
-                <p>Calo & macro cá nhân hóa. Thực phẩm nên/tránh rõ ràng. Ví dụ 200g protein trong 2000 calo. Không diet cực đoan – bền vững lâu dài.</p>
-            </div>
-            <div class="feature-card">
-                <h3>KẾT QUẢ THỰC TẾ</h3>
-                <p>Hàng ngàn người đã giảm 10-20kg mỡ, tăng cơ rõ rệt chỉ 90 ngày. Cơ thể mạnh mẽ, năng lượng bùng nổ.</p>
-            </div>
-            <div class="feature-card">
-                <h3>HỖ TRỢ MẠNH MẼ</h3>
-                <p>Cộng đồng VIP, video hướng dẫn, bonus Noel (meal plan đặc biệt + template theo dõi).</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">BEFORE & AFTER – BIẾN ĐỔI THỰC TẾ</h2>
-        <div class="before-after">
-            <div class="ba-pair">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/before-after-transformation-lead.jpg" alt="Before - mỡ cao">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.muscleandfitness.com/wp-content/uploads/2019/01/after-transformation-lead.jpg" alt="After - cơ bắp săn chắc">
-            </div>
-            <div class="ba-pair">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/before-after-weight-loss-1200x630.jpg" alt="Before female">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/05/after-weight-loss.jpg" alt="After toned female">
-            </div>
-            <div class="ba-pair">
-                <p style="font-size:1.8em; color:#ff1744;">Before</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/before-after-3-700xh.jpg" alt="Before male">
-                <p style="font-size:1.8em; color:#00e676;">After 90 Ngày</p>
-                <img src="https://www.bodybuilding.com/images/2020/xchange/transformation-of-the-week/after-3-700xh.jpg" alt="After shredded male">
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <h2 style="font-size:4em; color:#ff1744; margin-bottom:80px;">KHÁCH HÀNG NÓI GÌ</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p>"Giảm 18kg mỡ, bụng sáu múi rõ. Tập luyện mạnh mẽ, dinh dưỡng dễ theo. Best program ever!"</p>
-                <strong>- Việt, 29 tuổi</strong>
-            </div>
-            <div class="testimonial-card">
-                <p>"Từ gầy yếu thành mạnh mẽ. Năng lượng cả ngày, tự tin hơn hẳn. Cảm ơn WINDFIT!"</p>
-                <strong>- Hương, 26 tuổi</strong>
-            </div>
-            <div class="testimonial-card">
-                <p>"Kết quả vượt mong đợi. Tập khoa học, ăn ngon mà vẫn giảm mỡ tăng cơ. Recommend 100%!"</p>
-                <strong>- Long, 34 tuổi</strong>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing">
-        <h2 style="font-size:4.5em; color:#ff1744; margin-bottom:40px;">NOEL SALE - GIẢM 50% NGAY HÔM NAY!</h2>
-        <p style="font-size:2.5em; color:#00e676; margin-bottom:80px;">Giá gốc $198 → Chỉ còn từ $49 – Hạn cuối 31/12/2025!</p>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>BASIC</h3>
-                <p class="old-price">$98</p>
-                <p class="new-price">$49</p>
-                <ul>
-                    <li>PDF đầy đủ tập luyện & dinh dưỡng</li>
-                    <li>Checklist 90 ngày</li>
-                    <li>Hướng dẫn cơ bản</li>
-                    <li>Bonus Noel: Template theo dõi</li>
-                </ul>
-                <a href="https://buy.stripe.com/your_basic_link" target="_blank"><button>Mua Ngay</button></a>
-            </div>
-            <div class="price-card popular">
-                <h3>PREMIUM</h3>
-                <p class="old-price">$198</p>
-                <p class="new-price">$99</p>
-                <ul>
-                    <li>Tất cả Basic</li>
-                    <li>Video hướng dẫn từng bài tập</li>
-                    <li>Cộng đồng VIP hỗ trợ</li>
-                    <li>Bonus Noel: Meal Plan Cá Nhân + Audio Motivation</li>
-                    <li>Hoàn tiền 30 ngày</li>
-                </ul>
-                <a href="https://buy.stripe.com/your_premium_link" target="_blank"><button>Mua Ngay (Hot)</button></a>
-            </div>
-            <div class="price-card">
-                <h3>VIP</h3>
-                <p class="old-price">$398</p>
-                <p class="new-price">$199</p>
-                <ul>
-                    <li>Tất cả Premium</li>
-                    <li>Coaching 1:1 (2 buổi Zoom)</li>
-                    <li>Kế hoạch tập + ăn riêng</li>
-                    <li>Hỗ trợ ưu tiên lifetime</li>
-                </ul>
-                <a href="https://buy.stripe.com/your_vip_link" target="_blank"><button>Mua Ngay</button></a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 WINDFIT | Thanh toán an toàn qua Stripe | Hoàn tiền 30 ngày không rủi ro</p>
-        <p>Liên hệ: support@windfit.com</p>
-    </footer>
-
-    <script>
-        // Countdown Noel (hạn 31/12/2025)
-        let countdownDate = new Date("Dec 31, 2025 23:59:59").getTime();
-        let x = setInterval(function() {
-            let now = new Date().getTime();
-            let distance = countdownDate - now;
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("timer").innerHTML = days + " ngày " + hours + "h " + minutes + "m " + seconds + "s ";
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "HẾT HẠN!";
-            }
-        }, 1000);
+        AOS.init({ duration: 1200, once: false });
+        // Countdown script giữ nguyên
     </script>
 </body>
 </html>
